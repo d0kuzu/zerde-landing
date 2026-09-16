@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zerde — get found, get watched, get booked</title>
+<meta name="description" content="Zerde does three things for your business: turns raw footage into finished videos, answers customers when you can't, and gets AI to recommend you by name.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper:#EEF1F4;
+  --surface:#FFFFFF;
+  --surface-2:#F7F9FB;
+  --ink:#0B1B2B;
+  --ink-soft:#3F5568;
+  --muted:#6C8093;
+  --line:#D9E1E8;
+  --line-strong:#BFCDD9;
+  --kok:#0E6F9E;
+  --kok-hi:#0B5A82;
+  --kok-wash:#E4F0F7;
+  --deep:#08283D;
+  --deep-ink:#E9F1F7;
+  --deep-line:#14415E;
+  --altyn:#B9862A;
+  --altyn-wash:#F7EDD8;
+  --shadow:0 1px 2px rgba(11,27,43,.05), 0 12px 32px -12px rgba(11,27,43,.18);
+  --shadow-lift:0 2px 4px rgba(11,27,43,.06), 0 28px 60px -22px rgba(11,27,43,.30);
+  --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --disp:'Unbounded','Manrope',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#061320;--surface:#0A1D2C;--surface-2:#0D2434;
+    --ink:#E7EFF5;--ink-soft:#B4C6D4;--muted:#7F94A6;
+    --line:#153345;--line-strong:#1F485F;
+    --kok:#3BA9DA;--kok-hi:#63C0E8;--kok-wash:#0D2E41;
+    --deep:#04111C;--deep-ink:#E7EFF5;--deep-line:#173F57;
+    --altyn:#DCAE4C;--altyn-wash:#2A2011;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.6);
+    --shadow-lift:0 2px 4px rgba(0,0,0,.4), 0 28px 60px -22px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#061320;--surface:#0A1D2C;--surface-2:#0D2434;
+  --ink:#E7EFF5;--ink-soft:#B4C6D4;--muted:#7F94A6;
+  --line:#153345;--line-strong:#1F485F;
+  --kok:#3BA9DA;--kok-hi:#63C0E8;--kok-wash:#0D2E41;
+  --deep:#04111C;--deep-ink:#E7EFF5;--deep-line:#173F57;
+  --altyn:#DCAE4C;--altyn-wash:#2A2011;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -12px rgba(0,0,0,.6);
+  --shadow-lift:0 2px 4px rgba(0,0,0,.4), 0 28px 60px -22px rgba(0,0,0,.7);
+}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-family:var(--disp);font-weight:500;letter-spacing:-.02em;line-height:1.12}
+p{margin:0}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--kok);outline-offset:3px;border-radius:4px}
+
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+.lede{max-width:60ch;color:var(--ink-soft)}
+.sec{padding:96px 0}
+.sec-head{max-width:38ch}
+.sec-head h2{font-size:clamp(28px,4vw,42px)}
+.sec-head p{margin-top:16px;color:var(--ink-soft);max-width:58ch}
+.kicker{display:inline-flex;align-items:center;gap:9px;
+  font-size:13.5px;font-weight:600;color:var(--kok);margin-bottom:18px}
+.gem{width:9px;height:9px;flex:none;background:currentColor;
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+
+/* ============ BUTTONS ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 22px;border-radius:10px;border:1px solid transparent;
+  font-weight:600;font-size:16px;text-decoration:none;
+  transition:background .15s ease,border-color .15s ease,color .15s ease}
+.btn-main{background:var(--kok);color:#fff;border-color:var(--kok)}
+.btn-main:hover{background:var(--kok-hi);border-color:var(--kok-hi)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--ink);background:var(--surface)}
+.btn-sm{padding:10px 16px;font-size:15px;border-radius:9px}
+
+/* ============ NAV ============ */
+.nav{position:sticky;top:0;z-index:60;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:26px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);
+  font-weight:600;font-size:21px;letter-spacing:-.03em;text-decoration:none}
+.logo-mark{width:26px;height:26px;flex:none}
+.nav-links{display:flex;gap:24px;margin-left:12px}
+.nav-links a{text-decoration:none;color:var(--ink-soft);font-size:15.5px;font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.icon-btn{width:38px;height:38px;display:grid;place-items:center;border-radius:9px;
+  border:1px solid var(--line-strong);background:transparent;color:var(--ink-soft)}
+.icon-btn:hover{color:var(--ink);border-color:var(--ink)}
+.burger{display:none}
+@media(max-width:960px){
+  .nav-links{display:none}
+  .nav-links.open{display:flex;position:absolute;left:0;right:0;top:68px;flex-direction:column;
+    background:var(--surface);border-bottom:1px solid var(--line);padding:18px 22px;gap:16px}
+  .burger{display:grid}
+  .nav-cta{display:none}
+}
+
+/* ============ HERO ============ */
+.hero{padding:74px 0 88px}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(34px,5.1vw,60px);line-height:1.06}
+.hero .lede{margin-top:22px;font-size:clamp(17px,2vw,19.5px)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-note{margin-top:22px;color:var(--muted);font-size:15px;max-width:46ch}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:44px}.hero{padding:48px 0 64px}}
+
+.chain{display:grid;gap:0;position:relative}
+.chain-step{position:relative;padding-left:44px}
+.chain-step:not(:last-child){padding-bottom:20px}
+.rail{position:absolute;left:13px;top:6px;bottom:0;width:2px;background:var(--line-strong)}
+.chain-step:last-child .rail{display:none}
+.node{position:absolute;left:6px;top:4px;width:16px;height:16px;background:var(--kok);
+  clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.chain-label{font-size:13.5px;font-weight:600;color:var(--muted);margin-bottom:8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.anim{opacity:0;transform:translateY(10px);animation:rise .6s cubic-bezier(.2,.7,.3,1) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.45s}.d3{animation-delay:.8s}.d4{animation-delay:1.25s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.anim{animation:none;opacity:1;transform:none}}
+
+.mk{padding:14px 15px;font-size:14.5px}
+.mk-top{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12.5px;
+  font-weight:600;margin-bottom:10px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--kok)}
+.ask{color:var(--ink-soft)}
+.ans{margin-top:8px;line-height:1.5}
+.name-hl{background:var(--altyn-wash);color:var(--ink);border-bottom:2px solid var(--altyn);
+  padding:1px 4px;border-radius:3px;font-weight:700}
+.srcs{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.src{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:2px 9px}
+
+.reel-row{display:flex;gap:8px}
+.reel{flex:1;aspect-ratio:9/16;border-radius:9px;border:1px solid var(--line);
+  background:linear-gradient(170deg,var(--kok-wash),var(--surface-2));position:relative;overflow:hidden}
+.reel::after{content:"";position:absolute;left:8px;right:8px;bottom:9px;height:5px;
+  border-radius:3px;background:var(--line-strong)}
+.reel-play{position:absolute;inset:0;margin:auto;width:0;height:0;
+  border-left:12px solid var(--kok);border-top:8px solid transparent;border-bottom:8px solid transparent}
+.reel-views{position:absolute;top:7px;left:7px;font-size:10.5px;font-weight:700;color:var(--ink);
+  background:var(--surface);border-radius:99px;padding:1px 7px;border:1px solid var(--line)}
+
+.bub{max-width:82%;padding:8px 12px;border-radius:13px;font-size:14px;line-height:1.45;margin-bottom:7px}
+.bub-in{background:var(--surface-2);border:1px solid var(--line);border-bottom-left-radius:5px}
+.bub-out{background:var(--kok);color:#fff;margin-left:auto;border-bottom-right-radius:5px}
+.booked{display:flex;align-items:center;gap:9px;margin-top:10px;padding:9px 12px;
+  border-radius:11px;background:var(--altyn-wash);border:1px solid var(--altyn);
+  font-size:13.5px;font-weight:600;color:var(--ink)}
+
+/* ============ PAINS ============ */
+.pains{background:var(--deep);color:var(--deep-ink);padding:64px 0}
+.pains h2{font-size:clamp(24px,3.2vw,32px);color:var(--deep-ink)}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:38px;
+  background:var(--deep-line);border:1px solid var(--deep-line);border-radius:14px;overflow:hidden}
+.pain{background:var(--deep);padding:26px 24px}
+.pain p{font-size:16.5px;line-height:1.5}
+.pain span{display:block;margin-top:12px;color:#8FB2C8;font-size:14.5px}
+@media(max-width:820px){.pain-grid{grid-template-columns:1fr}}
+
+/* ============ PRODUCTS ============ */
+.prod{border-top:1px solid var(--line)}
+.prod-head{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:start}
+.prod-head h2{font-size:clamp(27px,3.8vw,40px)}
+.prod-head .lede{margin-top:18px;font-size:17.5px}
+.feat{list-style:none;padding:0;margin:26px 0 0}
+.feat li{display:flex;gap:13px;padding:11px 0;border-top:1px solid var(--line);
+  color:var(--ink-soft);font-size:16px;line-height:1.5}
+.feat li:first-child{border-top:0;padding-top:0}
+.feat b{color:var(--ink);font-weight:600}
+.feat .gem{color:var(--kok);margin-top:8px}
+.prod-cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:900px){.prod-head{grid-template-columns:1fr;gap:34px}}
+
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.step3{background:var(--surface-2);border:1px solid var(--line);border-radius:13px;padding:16px 17px}
+.step3 .n{font-family:var(--disp);font-size:14px;color:var(--kok);font-weight:600}
+.step3 p{margin-top:7px;font-size:15px;color:var(--ink-soft);line-height:1.45}
+@media(max-width:760px){.steps3{grid-template-columns:1fr}}
+
+.frame{background:var(--surface);border:1px solid var(--line);border-radius:18px;
+  box-shadow:var(--shadow-lift);overflow:hidden}
+.frame-bar{display:flex;align-items:center;gap:8px;padding:11px 15px;
+  border-bottom:1px solid var(--line);background:var(--surface-2)}
+.frame-bar span{font-size:13px;color:var(--muted);font-weight:600}
+.tl{display:flex;gap:4px;margin-left:auto}
+.tl i{width:5px;height:5px;border-radius:50%;background:var(--line-strong);display:block}
+
+.editor{padding:18px}
+.editor-top{display:grid;grid-template-columns:120px 1fr;gap:18px}
+.vprev{aspect-ratio:9/16;border-radius:11px;border:1px solid var(--line);
+  background:linear-gradient(165deg,var(--kok-wash),var(--surface-2));position:relative;overflow:hidden}
+.vprev b{position:absolute;left:8px;right:8px;bottom:14px;display:block;text-align:center;
+  font-size:11.5px;background:var(--ink);color:var(--paper);border-radius:6px;padding:4px 5px;font-weight:700}
+.script{font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+.script b{color:var(--ink);font-weight:600;display:block;margin-bottom:8px;font-size:13.5px}
+.track{margin-top:16px}
+.track-lbl{font-size:12.5px;color:var(--muted);font-weight:600;margin-bottom:7px}
+.track-row{display:flex;gap:5px;height:34px}
+.clipbox{border-radius:6px;border:1px solid var(--line);background:var(--kok-wash);
+  display:grid;place-items:center;font-size:11px;color:var(--kok-hi);font-weight:700}
+.wave{height:30px;display:flex;align-items:center;gap:2.5px;padding:0 8px;border-radius:6px;
+  border:1px solid var(--line);background:var(--surface-2);overflow:hidden}
+.wave i{display:block;width:2.5px;border-radius:2px;background:var(--kok);opacity:.55}
+.voices{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.voice{font-size:12.5px;border:1px solid var(--line);border-radius:99px;padding:5px 11px;color:var(--ink-soft)}
+.voice.on{border-color:var(--kok);background:var(--kok-wash);color:var(--kok-hi);font-weight:700}
+@media(max-width:520px){.editor-top{grid-template-columns:1fr}.vprev{max-width:150px}}
+
+.asst{display:grid;grid-template-columns:1.25fr .95fr;min-height:330px}
+.asst-chat{padding:16px;border-right:1px solid var(--line)}
+.asst-side{padding:16px;background:var(--surface-2)}
+.side-lbl{font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:11px}
+.lead{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:13px}
+.lead-row{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:5px 0}
+.lead-row span{color:var(--muted)}
+.lead-row b{font-weight:600;text-align:right}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;border-radius:99px;padding:2px 9px;
+  background:var(--altyn-wash);color:var(--altyn);border:1px solid var(--altyn)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}
+.stat{border:1px solid var(--line);border-radius:11px;background:var(--surface);padding:11px}
+.stat b{display:block;font-family:var(--disp);font-size:19px;font-weight:600}
+.stat span{font-size:12px;color:var(--muted)}
+.chans{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.chan{font-size:12.5px;border:1px solid var(--line);border-radius:8px;padding:5px 10px;
+  background:var(--surface);color:var(--ink-soft)}
+@media(max-width:700px){.asst{grid-template-columns:1fr}
+  .asst-chat{border-right:0;border-bottom:1px solid var(--line)}}
+
+.vis-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.answer{padding:20px}
+.answer .q{font-size:15px;font-weight:700;margin-bottom:14px}
+.answer .a{font-size:15.5px;line-height:1.62;color:var(--ink-soft)}
+.rank{padding:18px}
+.rank h4{font-size:14.5px;margin-bottom:14px}
+.rank-row{display:grid;grid-template-columns:1fr 74px 60px;gap:8px;align-items:center;
+  padding:10px 0;border-top:1px solid var(--line);font-size:13.5px}
+.rank-row:first-of-type{border-top:0;color:var(--muted);font-weight:700;font-size:12px}
+.rank-row em{font-style:normal;color:var(--ink-soft)}
+.was{color:var(--muted)}
+.now{color:var(--kok);font-weight:700}
+@media(max-width:860px){.vis-wrap{grid-template-columns:1fr}}
+
+/* ============ HOW ============ */
+.how{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;
+  border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.how-cell{padding:26px 24px;border-left:1px solid var(--line)}
+.how-cell:first-child{border-left:0}
+.how-cell .n{font-family:var(--disp);font-size:13px;color:var(--kok);font-weight:600;margin-bottom:12px}
+.how-cell h3{font-size:18px;font-family:var(--sans);font-weight:700;letter-spacing:0}
+.how-cell p{margin-top:9px;font-size:15px;color:var(--ink-soft);line-height:1.5}
+@media(max-width:900px){
+  .how-grid{grid-template-columns:1fr}
+  .how-cell{border-left:0;border-top:1px solid var(--line)}
+  .how-cell:first-child{border-top:0}
+}
+
+/* ============ CASES ============ */
+.case-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;
+  display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.case .who{font-size:13.5px;color:var(--muted);font-weight:600}
+.case .big{font-family:var(--disp);font-size:clamp(28px,3.4vw,36px);font-weight:600;
+  margin:14px 0 6px;letter-spacing:-.03em}
+.case .what{font-size:15.5px;color:var(--ink-soft);line-height:1.5}
+.case .quote{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+@media(max-width:900px){.case-grid{grid-template-columns:1fr}}
+
+/* ============ PACKAGES ============ */
+.pk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.pk{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px;
+  display:flex;flex-direction:column}
+.pk h3{font-size:20px;font-family:var(--sans);font-weight:700;letter-spacing:0}
+.pk .sub{margin-top:8px;color:var(--ink-soft);font-size:15px;line-height:1.5}
+.pk ul{list-style:none;padding:0;margin:20px 0 0;flex:1}
+.pk li{display:flex;gap:11px;font-size:15px;color:var(--ink-soft);padding:8px 0;line-height:1.45}
+.pk li .gem{color:var(--kok);margin-top:7px}
+.pk .term{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);
+  font-size:14px;color:var(--muted)}
+.pk .btn{margin-top:16px;width:100%}
+@media(max-width:900px){.pk-grid{grid-template-columns:1fr}}
+
+/* ============ FAQ ============ */
+.faq-list{margin-top:40px;border-top:1px solid var(--line-strong);max-width:860px}
+.q-item{border-bottom:1px solid var(--line)}
+.q-btn{width:100%;display:flex;align-items:center;gap:16px;text-align:left;background:none;
+  border:0;padding:22px 0;color:var(--ink);font-size:17.5px;font-weight:600;line-height:1.35}
+.q-btn .pm{margin-left:auto;flex:none;width:22px;height:22px;position:relative;color:var(--kok)}
+.q-btn .pm::before,.q-btn .pm::after{content:"";position:absolute;background:currentColor;
+  left:50%;top:50%;transform:translate(-50%,-50%);transition:transform .2s ease}
+.q-btn .pm::before{width:15px;height:2px}
+.q-btn .pm::after{width:2px;height:15px}
+.q-item.open .pm::after{transform:translate(-50%,-50%) scaleY(0)}
+.q-ans{max-height:0;overflow:hidden;transition:max-height .28s ease}
+.q-ans p{padding:0 0 22px;color:var(--ink-soft);font-size:16px;max-width:68ch;line-height:1.6}
+@media(prefers-reduced-motion:reduce){.q-ans{transition:none}}
+
+/* ============ FINAL ============ */
+.final{background:var(--deep);color:var(--deep-ink)}
+.final-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.final h2{font-size:clamp(28px,4vw,42px);color:var(--deep-ink)}
+.final .lede{color:#A9C6D8;margin-top:18px}
+.trust{list-style:none;padding:0;margin:30px 0 0}
+.trust li{display:flex;gap:12px;padding:9px 0;color:#C8DCE9;font-size:16px}
+.trust .gem{color:var(--altyn);margin-top:7px}
+.form{background:var(--surface);border-radius:18px;padding:28px;color:var(--ink)}
+.form h3{font-size:20px;font-family:var(--sans);font-weight:700;letter-spacing:0}
+.field{margin-top:16px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:7px}
+.field input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line-strong);
+  background:var(--surface-2);color:var(--ink);font-size:16px;font-family:inherit}
+.field input:focus{outline:2px solid var(--kok);outline-offset:1px;border-color:var(--kok)}
+.picks{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.pick{border:1px solid var(--line-strong);background:var(--surface-2);border-radius:99px;
+  padding:8px 14px;font-size:14.5px;color:var(--ink-soft);font-weight:600}
+.pick[aria-pressed="true"]{background:var(--kok-wash);border-color:var(--kok);color:var(--kok-hi)}
+.form .btn{width:100%;margin-top:20px}
+.form .fine{margin-top:12px;font-size:13px;color:var(--muted);text-align:center}
+.done{display:none;text-align:center;padding:26px 6px}
+.done b{display:block;font-family:var(--disp);font-size:21px;font-weight:600;margin-bottom:10px}
+.done p{color:var(--ink-soft);font-size:15.5px}
+.form.sent .form-body{display:none}
+.form.sent .done{display:block}
+@media(max-width:900px){.final-grid{grid-template-columns:1fr;gap:38px}}
+
+/* ============ FOOTER ============ */
+.foot{background:var(--deep);color:#8FB2C8;border-top:1px solid var(--deep-line);padding:40px 0}
+.foot-in{display:flex;flex-wrap:wrap;gap:20px;align-items:center;font-size:14.5px}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--deep-ink)}
+.foot-links{display:flex;gap:20px;margin-left:auto;flex-wrap:wrap}
+
+/* ============ WIDGET ============ */
+.aw-btn{position:fixed;right:20px;bottom:20px;z-index:80;display:flex;align-items:center;gap:10px;
+  padding:13px 18px;border-radius:99px;border:1px solid var(--kok);background:var(--kok);color:#fff;
+  font-weight:600;font-size:15px;box-shadow:var(--shadow-lift)}
+.aw-panel{position:fixed;right:20px;bottom:20px;z-index:81;width:min(340px,calc(100vw - 40px));
+  background:var(--surface);border:1px solid var(--line);border-radius:18px;
+  box-shadow:var(--shadow-lift);overflow:hidden;display:none}
+.aw-panel.open{display:block}
+.aw-head{display:flex;align-items:center;gap:10px;padding:14px 16px;
+  border-bottom:1px solid var(--line);background:var(--surface-2)}
+.aw-head b{font-size:15px}
+.aw-head small{color:var(--muted);font-size:12.5px;display:block}
+.aw-close{margin-left:auto;background:none;border:0;color:var(--muted);font-size:21px;line-height:1}
+.aw-body{padding:14px 16px;max-height:250px;overflow-y:auto}
+.aw-qs{padding:12px 16px 16px;border-top:1px solid var(--line);display:grid;gap:7px}
+.aw-q{text-align:left;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;
+  padding:9px 12px;font-size:14px;color:var(--ink-soft)}
+.aw-q:hover{border-color:var(--kok);color:var(--kok-hi)}
+@media(max-width:520px){.aw-btn{right:14px;bottom:14px;padding:12px 15px}}
+
+/* ============ MEMO ============ */
+.memo{background:var(--altyn-wash);border-top:3px solid var(--altyn);padding:40px 0;color:var(--ink)}
+.memo h3{font-size:19px;font-family:var(--sans);font-weight:700;letter-spacing:0}
+.memo ol{margin:16px 0 0;padding-left:20px;max-width:70ch}
+.memo li{padding:5px 0;font-size:15.5px;line-height:1.5}
+.memo p{margin-top:14px;font-size:14px;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#top">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 1l6 7-6 7-6-7 6-7z" fill="currentColor"/>
+        <path d="M16 17l6 7-6 7-6-7 6-7z" fill="currentColor" opacity=".35"/>
+        <path d="M4 16l5-5 5 5-5 5-5-5zM18 16l5-5 5 5-5 5-5-5z" fill="currentColor" opacity=".6"/>
+      </svg>
+      Zerde
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#video">Video</a>
+      <a href="#assistant">Assistant</a>
+      <a href="#visibility">AI visibility</a>
+      <a href="#results">Results</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" aria-label="Switch theme">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="icon-btn burger" id="burger" aria-label="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <a class="btn btn-main btn-sm nav-cta" href="#start">Book a free review</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Get found. Get watched. Get booked.</h1>
+      <p class="lede">Zerde does three things for your business: turns your raw footage into
+        finished videos, answers customers when you can't, and gets AI to recommend you by name.</p>
+      <div class="hero-cta">
+        <a class="btn btn-main" href="#start">Book a free review</a>
+        <a class="btn btn-ghost" href="#video">See how it works</a>
+      </div>
+      <p class="hero-note">Thirty minutes, no charge. We'll show you where your business
+        is losing people right now, and what can be fixed in two weeks.</p>
+    </div>
+
+    <div class="chain" aria-label="One customer, three touchpoints">
+      <div class="chain-step anim d1">
+        <span class="rail"></span><span class="node"></span>
+        <div class="chain-label">Megan asks AI</div>
+        <div class="card mk">
+          <div class="mk-top"><span class="dot"></span> AI answer</div>
+          <div class="ask">"Where in Austin can I get a keratin treatment that won't wreck my hair?"</div>
+          <div class="ans">People keep pointing to <span class="name-hl">Halo Salon</span> —
+            they use formaldehyde-free formulas and walk you through the ingredients first.</div>
+          <div class="srcs"><span class="src">Google reviews</span><span class="src">Reddit</span><span class="src">halosalon.com</span></div>
+        </div>
+      </div>
+
+      <div class="chain-step anim d2">
+        <span class="rail"></span><span class="node"></span>
+        <div class="chain-label">She checks your Instagram</div>
+        <div class="card mk">
+          <div class="reel-row">
+            <div class="reel"><span class="reel-views">48K</span><span class="reel-play"></span></div>
+            <div class="reel"><span class="reel-views">12K</span><span class="reel-play"></span></div>
+            <div class="reel"><span class="reel-views">96K</span><span class="reel-play"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chain-step anim d3">
+        <span class="rail"></span><span class="node"></span>
+        <div class="chain-label">She messages at 11:40 pm — and books</div>
+        <div class="card mk">
+          <div class="bub bub-in">Hi! How much is keratin for long hair?</div>
+          <div class="bub bub-out">Starts at $180, depending on length. Tomorrow I have 2:00 and 5:30 open — which works better?</div>
+          <div class="bub bub-in">2 pm</div>
+          <div class="booked anim d4">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Booked for tomorrow, 2:00 pm — on your calendar
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PAINS ================= -->
+<section class="pains">
+  <div class="wrap">
+    <h2>Sound familiar?</h2>
+    <div class="pain-grid">
+      <div class="pain">
+        <p>You shoot plenty. You post rarely.</p>
+        <span>Footage piles up on your phone for months. Editing never makes it to the top of the list.</span>
+      </div>
+      <div class="pain">
+        <p>They message at 11 pm. You answer at 9 am.</p>
+        <span>By then they've booked with whoever replied first.</span>
+      </div>
+      <div class="pain">
+        <p>People ask AI who to go to.</p>
+        <span>It names your competitors, because there's nothing out there for it to say about you.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VIDEO ================= -->
+<section class="sec prod" id="video">
+  <div class="wrap">
+    <div class="prod-head">
+      <div>
+        <span class="kicker"><span class="gem"></span>Video</span>
+        <h2>Drop in raw footage. Get finished videos back.</h2>
+        <p class="lede">No editor, no scriptwriter, no voice talent. Upload everything you
+          filmed this week and get vertical videos back with voiceover and captions.</p>
+        <ul class="feat">
+          <li><span class="gem"></span><span><b>Watches all of it</b> and keeps the moments that actually land — not the retakes.</span></li>
+          <li><span class="gem"></span><span><b>Writes the script from what you filmed,</b> not from a generic template.</span></li>
+          <li><span class="gem"></span><span><b>Orders the clips</b> so the hook comes first, the explanation second, the ask last.</span></li>
+          <li><span class="gem"></span><span><b>Adds the voiceover</b> — pick one from the library, or use your own from a short sample.</span></li>
+        </ul>
+        <div class="prod-cta">
+          <a class="btn btn-main" href="#start">Turn my footage into videos</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="frame">
+          <div class="frame-bar">
+            <span>This week's footage — 14 files</span>
+            <span class="tl"><i></i><i></i><i></i></span>
+          </div>
+          <div class="editor">
+            <div class="editor-top">
+              <div class="vprev"><b>keratin, no fumes</b></div>
+              <div class="script">
+                <b>Script, written from your clips</b>
+                "If your hair felt like straw after a keratin treatment, it was the wrong
+                formula. Here's what the right one looks like — no burning smell, no watering eyes…"
+              </div>
+            </div>
+            <div class="track">
+              <div class="track-lbl">Clips in edit order</div>
+              <div class="track-row">
+                <div class="clipbox" style="flex:1.6">hook</div>
+                <div class="clipbox" style="flex:2.4">process</div>
+                <div class="clipbox" style="flex:1.2">detail</div>
+                <div class="clipbox" style="flex:1.8">result</div>
+              </div>
+            </div>
+            <div class="track">
+              <div class="track-lbl">Voiceover</div>
+              <div class="wave" id="wave"></div>
+            </div>
+            <div class="voices">
+              <span class="voice on">Your voice</span>
+              <span class="voice">Ava</span>
+              <span class="voice">Marcus</span>
+              <span class="voice">Nina</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps3">
+      <div class="step3"><div class="n">Step 1</div><p>Upload the folder — phone footage is fine.</p></div>
+      <div class="step3"><div class="n">Step 2</div><p>Pick the topic and the voice.</p></div>
+      <div class="step3"><div class="n">Step 3</div><p>Download finished videos with captions an hour later.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ASSISTANT ================= -->
+<section class="sec prod" id="assistant">
+  <div class="wrap">
+    <div class="prod-head">
+      <div>
+        <span class="kicker"><span class="gem"></span>Assistant</span>
+        <h2>Answers customers around the clock and books them in</h2>
+        <p class="lede">Not a chatbot with buttons. It knows your services, prices and rules,
+          talks like a person, and takes someone all the way to a booked appointment —
+          at midnight, on a Sunday, when forty messages land at once.</p>
+        <ul class="feat">
+          <li><span class="gem"></span><span><b>Works where people message you:</b> text, WhatsApp, Instagram, your website, and phone calls.</span></li>
+          <li><span class="gem"></span><span><b>Books straight into</b> Google Calendar or Cal.com, and sends the reminder.</span></li>
+          <li><span class="gem"></span><span><b>Keeps every lead in one place:</b> who wrote in, what they wanted, how it ended.</span></li>
+          <li><span class="gem"></span><span><b>You read every conversation</b> and can step in yourself at any point.</span></li>
+        </ul>
+        <div class="prod-cta">
+          <a class="btn btn-main" href="#start">Set one up for my business</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="frame">
+          <div class="frame-bar">
+            <span>Conversations and leads</span>
+            <span class="tl"><i></i><i></i><i></i></span>
+          </div>
+          <div class="asst">
+            <div class="asst-chat">
+              <div class="bub bub-in">Hi, do you see kids?</div>
+              <div class="bub bub-out">We do, from age 5. Dr. Reyes handles our pediatric visits. Want me to get you on the schedule?</div>
+              <div class="bub bub-in">Saturday if you have it</div>
+              <div class="bub bub-out">Saturday has 11:00 am and 3:30 pm. Which one works?</div>
+              <div class="bub bub-in">11</div>
+            </div>
+            <div class="asst-side">
+              <div class="side-lbl">Lead</div>
+              <div class="lead">
+                <div class="lead-row"><span>Name</span><b>Megan T.</b></div>
+                <div class="lead-row"><span>Service</span><b>Pediatric visit</b></div>
+                <div class="lead-row"><span>Time</span><b>Sat, 11:00 am</b></div>
+                <div class="lead-row"><span>Status</span><b><span class="tag">Booked</span></b></div>
+              </div>
+              <div class="stats">
+                <div class="stat"><b>128</b><span>conversations this week</span></div>
+                <div class="stat"><b>41</b><span>booked</span></div>
+              </div>
+              <div class="chans">
+                <span class="chan">Text</span><span class="chan">WhatsApp</span>
+                <span class="chan">Instagram</span><span class="chan">Calls</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps3">
+      <div class="step3"><div class="n">Step 1</div><p>Tell us your services, prices and how you work.</p></div>
+      <div class="step3"><div class="n">Step 2</div><p>We set it up and connect your calendar.</p></div>
+      <div class="step3"><div class="n">Step 3</div><p>It goes live on your channels. You watch the leads come in.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISIBILITY ================= -->
+<section class="sec prod" id="visibility">
+  <div class="wrap">
+    <div class="prod-head">
+      <div>
+        <span class="kicker"><span class="gem"></span>AI visibility</span>
+        <h2>When someone asks AI who to go to, it should say your name</h2>
+        <p class="lede">More and more people skip the search bar and ask ChatGPT instead:
+          where should I go, who should I hire, which one is better. AI answers with one or
+          two names, and that's where people go. We work to make that name yours.</p>
+        <ul class="feat">
+          <li><span class="gem"></span><span><b>See what AI says about you today</b> — and what it says about the shop down the street.</span></li>
+          <li><span class="gem"></span><span><b>Trace where those answers come from:</b> reviews, forums, directories, articles.</span></li>
+          <li><span class="gem"></span><span><b>Rewrite your site and content</b> so AI can actually read you and quote you.</span></li>
+          <li><span class="gem"></span><span><b>Monthly report</b> showing which questions you started coming up for.</span></li>
+        </ul>
+        <div class="prod-cta">
+          <a class="btn btn-main" href="#start">Check what AI says about me</a>
+        </div>
+      </div>
+
+      <div class="vis-wrap">
+        <div class="frame answer">
+          <div class="q">"Which dentist in Phoenix is best for an anxious kid?"</div>
+          <div class="a">Parents keep naming three practices. <span class="name-hl">Sundance
+            Pediatric Dental</span> comes up most: a separate kids' waiting area, staff trained
+            for anxious patients, and prices listed openly on their site…</div>
+          <div class="srcs"><span class="src">sundancekids.com</span><span class="src">Google reviews</span><span class="src">Reddit</span></div>
+        </div>
+        <div class="frame rank">
+          <h4>Questions you come up for</h4>
+          <div class="rank-row"><span>Question</span><span>Before</span><span>Now</span></div>
+          <div class="rank-row"><em>best pediatric dentist phoenix</em><span class="was">not named</span><span class="now">#1</span></div>
+          <div class="rank-row"><em>dentist for an anxious child</em><span class="was">not named</span><span class="now">#2</span></div>
+          <div class="rank-row"><em>cost of a filling for a kid</em><span class="was">not named</span><span class="now">#1</span></div>
+          <div class="rank-row"><em>emergency pediatric dentist</em><span class="was">not named</span><span class="was">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps3">
+      <div class="step3"><div class="n">Step 1</div><p>We collect the questions your customers actually ask AI.</p></div>
+      <div class="step3"><div class="n">Step 2</div><p>We look at who it names today, and why them.</p></div>
+      <div class="step3"><div class="n">Step 3</div><p>We fix your site, work the sources, and track what moves.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW WE WORK ================= -->
+<section class="sec how">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How we work</h2>
+      <p>No long onboarding, no annual contract to sign up front. It starts with a free
+        review that's worth your time even if you never hire us.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-cell">
+        <div class="n">Step 1</div>
+        <h3>Free review</h3>
+        <p>Thirty minutes. We look at your business and show you where you're losing people today.</p>
+      </div>
+      <div class="how-cell">
+        <div class="n">Step 2</div>
+        <h3>Plan and price</h3>
+        <p>You get what we'd do, in what order, and a fixed price. No ranges.</p>
+      </div>
+      <div class="how-cell">
+        <div class="n">Step 3</div>
+        <h3>Live in 1–2 weeks</h3>
+        <p>We set everything up. All we need from you is materials and half an hour to sign off.</p>
+      </div>
+      <div class="how-cell">
+        <div class="n">Step 4</div>
+        <h3>Monthly report</h3>
+        <p>We show you what changed, in numbers, and fix whatever is underperforming.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESULTS ================= -->
+<section class="sec" id="results">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What it did for other businesses</h2>
+      <p>Three examples from different industries. Numbers are from the first two months.</p>
+    </div>
+    <div class="case-grid">
+      <div class="case">
+        <div class="who">Med spa, Austin</div>
+        <div class="big">4× the posts</div>
+        <div class="what">Went from 2 videos a month to 8, with no editor on payroll. One clip hit 96K views.</div>
+        <div class="quote">"The footage used to just sit on my phone. Now something goes out every week."</div>
+      </div>
+      <div class="case">
+        <div class="who">Pediatric dental, Phoenix</div>
+        <div class="big">41 bookings</div>
+        <div class="what">The assistant handled 128 messages in a week. A third of them came in after hours.</div>
+        <div class="quote">"Our front desk stopped choosing between the phone and the person standing there."</div>
+      </div>
+      <div class="case">
+        <div class="who">Beauty school, San Francisco</div>
+        <div class="big">Named first</div>
+        <div class="what">AI now names the school first on the questions that matter. Before, it didn't name it at all.</div>
+        <div class="quote">"People started showing up saying ChatGPT recommended us."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PACKAGES ================= -->
+<section class="sec how" id="packages">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Where to start</h2>
+      <p>Take one piece or all three. All three costs less together and works better,
+        because each one feeds the next.</p>
+    </div>
+    <div class="pk-grid">
+      <div class="pk">
+        <h3>Video</h3>
+        <p class="sub">If footage keeps piling up and editing never happens.</p>
+        <ul>
+          <li><span class="gem"></span>8 videos a month</li>
+          <li><span class="gem"></span>Scripts and voiceover</li>
+          <li><span class="gem"></span>Captions and thumbnails</li>
+          <li><span class="gem"></span>Your own voice on the voiceover</li>
+        </ul>
+        <div class="term">First videos in three days</div>
+        <a class="btn btn-ghost" href="#start">See pricing</a>
+      </div>
+      <div class="pk">
+        <h3>Assistant</h3>
+        <p class="sub">If leads slip through and there's nobody free to answer.</p>
+        <ul>
+          <li><span class="gem"></span>Set up around your services</li>
+          <li><span class="gem"></span>Text, WhatsApp, Instagram, calls, website</li>
+          <li><span class="gem"></span>Booking into your calendar</li>
+          <li><span class="gem"></span>Weekly lead report</li>
+        </ul>
+        <div class="term">Live in 1–2 weeks</div>
+        <a class="btn btn-ghost" href="#start">See pricing</a>
+      </div>
+      <div class="pk">
+        <h3>AI visibility</h3>
+        <p class="sub">If customers pick by asking ChatGPT and you're not in the answer.</p>
+        <ul>
+          <li><span class="gem"></span>Audit of what AI says now</li>
+          <li><span class="gem"></span>Site and content rewrite</li>
+          <li><span class="gem"></span>Work on reviews and sources</li>
+          <li><span class="gem"></span>Monthly tracking report</li>
+        </ul>
+        <div class="term">First movement in about a month</div>
+        <a class="btn btn-ghost" href="#start">See pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head"><h2>Questions we get a lot</h2></div>
+    <div class="faq-list" id="faq-list">
+      <div class="q-item">
+        <button class="q-btn">Do I need to be technical?<span class="pm"></span></button>
+        <div class="q-ans"><p>No. You describe your business in plain words and we handle the rest.
+          Everything you get back works from your phone.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-btn">What does it cost?<span class="pm"></span></button>
+        <div class="q-ans"><p>It depends on volume: how many videos a month, how many channels the
+          assistant covers, what shape your site is in. After the free review you get a fixed
+          number, not a range.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-btn">Will customers know they're talking to AI?<span class="pm"></span></button>
+        <div class="q-ans"><p>The assistant introduces itself as an assistant — we don't pretend otherwise.
+          In practice people care about getting a straight answer and a time slot. Anything unusual
+          gets handed to you.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-btn">What happens to my customer data?<span class="pm"></span></button>
+        <div class="q-ans"><p>It stays yours. Only you and the people you grant access to can read the
+          conversations. We don't sell it, share it, or reuse it for other clients.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-btn">What languages does the assistant handle?<span class="pm"></span></button>
+        <div class="q-ans"><p>English and Spanish out of the box, others on request. It replies in
+          whichever language the customer wrote in.</p></div>
+      </div>
+      <div class="q-item">
+        <button class="q-btn">What if it doesn't work for us?<span class="pm"></span></button>
+        <div class="q-ans"><p>We start with one piece and a small scope so you see results before
+          committing further. If the numbers haven't moved after a month, we figure out why and redo it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="sec final" id="start">
+  <div class="wrap final-grid">
+    <div>
+      <h2>Start with the review</h2>
+      <p class="lede">Thirty minutes. We go through your social accounts, your website, and what
+        AI currently says about your industry — then show you specific things worth fixing.</p>
+      <ul class="trust">
+        <li><span class="gem"></span>Free, and nothing to sign</li>
+        <li><span class="gem"></span>You leave with a plan and an exact price</li>
+        <li><span class="gem"></span>We reply the same day</li>
+      </ul>
+    </div>
+
+    <div class="form" id="form">
+      <div class="form-body">
+        <h3>Leave us a way to reach you</h3>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" type="text" placeholder="Megan">
+        </div>
+        <div class="field">
+          <label for="f-contact">Email or phone</label>
+          <input id="f-contact" type="text" placeholder="you@business.com">
+        </div>
+        <div class="field">
+          <label for="f-biz">Website or Instagram</label>
+          <input id="f-biz" type="text" placeholder="instagram.com/...">
+        </div>
+        <div class="field">
+          <label>What you're after</label>
+          <div class="picks" id="picks">
+            <button class="pick" aria-pressed="false">Video</button>
+            <button class="pick" aria-pressed="false">Assistant</button>
+            <button class="pick" aria-pressed="false">AI visibility</button>
+            <button class="pick" aria-pressed="false">Not sure yet</button>
+          </div>
+        </div>
+        <button class="btn btn-main" id="send">Book my review</button>
+        <p class="fine">We'll reach out the same day. No newsletters.</p>
+      </div>
+      <div class="done">
+        <b>Got it</b>
+        <p>We'll be in touch today with a few times that might work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>Zerde — AI that does the work for small businesses.</span>
+    <div class="foot-links">
+      <a href="#video">Video</a>
+      <a href="#assistant">Assistant</a>
+      <a href="#visibility">AI visibility</a>
+      <a href="#start">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= WIDGET ================= -->
+<button class="aw-btn" id="awBtn">
+  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.8 8.8 0 01-3.9-.9L3 20.5l1.6-4.8A8.4 8.4 0 0112 3.1a8.4 8.4 0 019 8.4z" stroke-linejoin="round"/>
+  </svg>
+  Ask our assistant
+</button>
+
+<div class="aw-panel" id="awPanel" role="dialog" aria-label="Zerde assistant">
+  <div class="aw-head">
+    <span class="dot"></span>
+    <div><b>Zerde assistant</b><small>Answers instantly — it's our own product</small></div>
+    <button class="aw-close" id="awClose" aria-label="Close">×</button>
+  </div>
+  <div class="aw-body" id="awBody">
+    <div class="bub bub-in">Hi! Ask me anything, or tap one of the questions below.</div>
+  </div>
+  <div class="aw-qs" id="awQs">
+    <button class="aw-q" data-a="It depends on volume. After the free review you get one fixed number — no ranges.">What does it cost?</button>
+    <button class="aw-q" data-a="First videos land in three days. The assistant goes live in one to two weeks.">How fast can we start?</button>
+    <button class="aw-q" data-a="Yes. Record a couple of minutes of yourself talking and we use that for the voiceover.">Can it use my own voice?</button>
+    <button class="aw-q" data-a="Drop your email in the form below and we'll send you a few times today.">I want the free review</button>
+  </div>
+</div>
+
+<!-- ================= MEMO ================= -->
+<section class="memo" lang="ru">
+  <div class="wrap">
+    <h3>Заметка для команды Zerde — удалить перед публикацией</h3>
+    <ol>
+      <li>Заменить примеры в блоке «What it did for other businesses» на ваши настоящие кейсы и цифры.</li>
+      <li>Заменить заглушки-скриншоты (редактор видео, диалоги, ответ ИИ) на реальные скрины продуктов или короткие записи экрана.</li>
+      <li>Решить по ценам: оставить «See pricing» или поставить «Starting at $___».</li>
+      <li>Подключить форму к CRM или почте — сейчас она просто показывает подтверждение.</li>
+      <li>Подключить виджет ассистента внизу справа к настоящему ассистенту Zerde.</li>
+      <li>Добавить логотипы клиентов под первым экраном, если есть разрешение.</li>
+      <li>Прописать юридические данные, адрес и политику приватности в подвале — для США это важно для доверия.</li>
+    </ol>
+    <p>Тексты нарочно написаны простым языком: без AEO, GEO, LLM и «pipelines».
+      Если добавляете блоки — держитесь того же уровня языка.</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.documentElement, tb=document.getElementById('themeBtn');
+  try{var s=localStorage.getItem('zerde-theme'); if(s) root.setAttribute('data-theme',s);}catch(e){}
+  tb.addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){cur=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('zerde-theme',next);}catch(e){}
+  });
+
+  var burger=document.getElementById('burger'), links=document.getElementById('navLinks');
+  burger.addEventListener('click',function(){links.classList.toggle('open');});
+  links.addEventListener('click',function(e){if(e.target.tagName==='A')links.classList.remove('open');});
+
+  var w=document.getElementById('wave');
+  if(w){for(var i=0;i<70;i++){var b=document.createElement('i');
+    b.style.height=(4+Math.abs(Math.sin(i*0.7))*18+Math.random()*5).toFixed(1)+'px';
+    w.appendChild(b);}}
+
+  document.querySelectorAll('.q-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item=btn.parentElement, ans=item.querySelector('.q-ans'), open=item.classList.contains('open');
+      document.querySelectorAll('.q-item.open').forEach(function(o){
+        o.classList.remove('open'); o.querySelector('.q-ans').style.maxHeight=null;});
+      if(!open){item.classList.add('open'); ans.style.maxHeight=ans.scrollHeight+'px';}
+    });
+  });
+
+  document.querySelectorAll('.pick').forEach(function(p){
+    p.addEventListener('click',function(){
+      p.setAttribute('aria-pressed', p.getAttribute('aria-pressed')==='true'?'false':'true');});
+  });
+  document.getElementById('send').addEventListener('click',function(){
+    document.getElementById('form').classList.add('sent');});
+
+  var awBtn=document.getElementById('awBtn'), awPanel=document.getElementById('awPanel'),
+      awBody=document.getElementById('awBody');
+  awBtn.addEventListener('click',function(){awPanel.classList.add('open');awBtn.style.display='none';});
+  document.getElementById('awClose').addEventListener('click',function(){
+    awPanel.classList.remove('open');awBtn.style.display='flex';});
+  document.querySelectorAll('.aw-q').forEach(function(q){
+    q.addEventListener('click',function(){
+      var out=document.createElement('div'); out.className='bub bub-out'; out.textContent=q.textContent;
+      awBody.appendChild(out);
+      var inn=document.createElement('div'); inn.className='bub bub-in'; inn.textContent=q.dataset.a;
+      setTimeout(function(){awBody.appendChild(inn);awBody.scrollTop=awBody.scrollHeight;},420);
+      awBody.scrollTop=awBody.scrollHeight;
+    });
+  });
+})();
+</script>
+</body>
+</html>
