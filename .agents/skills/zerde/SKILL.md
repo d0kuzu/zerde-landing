@@ -1,87 +1,72 @@
 ---
 name: zerde
-description: Core company context, product pillars, target audience (US small business owners), value propositions, funnel strategy, and design guidelines for Zerde.
+description: Company context, three AI offerings, US small and medium business audience, landing-page positioning, conversion strategy, and confirmed visual preferences for Zerde. Use when creating Zerde marketing or product materials.
 ---
 
-# Zerde — Company & Product Architecture
+# Zerde — company, products, and website direction
 
-## 1. Company Overview
-- **Name:** Zerde
-- **Market:** United States (US small & medium business owners)
-- **Mission:** Empower small business owners to dominate modern digital acquisition through automated AI video production, 24/7 autonomous lead capture, and top-tier AI search visibility.
-- **Positioning:** Not a complex developer tool, but a frictionless, ROI-obsessed AI growth suite that works right out of the box.
+## Company and audience
 
----
+- **Name:** Zerde.
+- **Market:** United States; small and medium business owners.
+- **Positioning:** Practical AI that helps owners attract customers, handle inquiries, and reduce everyday marketing work. Explain the business outcome before the technology.
+- **Audience:** Multiple industries, including tours and experiences, health and beauty, home services, and professional services. MedSpa is an example audience, not the exclusive niche.
+- **Voice:** Simple, warm, direct English for US business owners. Avoid technical jargon, exaggerated promises, and developer-oriented language.
+- **Customer needs:** More time for the business, fewer unanswered inquiries, useful social content, and a stronger presence as discovery moves into AI search.
 
-## 2. Target Audience & Mindset
-- **Primary Persona:** US Small Business Owners (Contractors & Home Services, Clinics & MedSpas, Realtors, Local Professionals, Boutique Agencies, E-commerce).
-- **Core Pain Points:**
-  - **No time for social media:** They know TikTok and Instagram Reels drive local customers, but spending 10 hours editing footage is impossible.
-  - **Missed calls & lost leads:** 62% of customer calls to small businesses go unanswered when busy or after hours. Competitors grab those leads.
-  - **Vanishing from search:** Customers are no longer just Googling; they ask ChatGPT, Perplexity, and Apple Intelligence: *"Who is the best reliable [service] near me?"* If AI doesn't know them, they don't exist.
-- **Language & Tone:**
-  - Simple, direct, outcome-focused English.
-  - **Strictly eliminate jargon:**
-    - Replace *AEO (Answer Engine Optimization)* with **"AI Search Visibility"** or **"Get Recommended by ChatGPT"**.
-    - Replace *LLM Agent Orchestration* with **"24/7 AI Booking Assistant"**.
-    - Replace *Voice synthesis & timeline segmentation* with **"Raw Footage to Viral Video in 1 Click"**.
+## Three separate offerings
 
----
+### AI Video Studio
 
-## 3. The 3 Core Product Pillars
+Turns raw phone footage into social videos. The product description includes scene analysis, removal of filler, hooks and scripts, reordered footage, and AI voiceover or the owner's voice when properly configured. Emphasize turning everyday moments into usable content without a complicated editing workflow. Do not promise virality or a specific production speed without evidence.
 
-### Pillar 1: AI Video Studio (Viral Reels from Raw Clips)
-- **What it does:** Upload raw footage from a phone -> AI analyzes the visual scenes, cuts filler, scripts an engaging hook & narrative, re-orders footage dynamically, and overlays ultra-realistic AI voiceover (or the owner's cloned voice).
-- **Key Benefit:** Produce a month of high-converting social content in 15 minutes without hiring an expensive video editor.
+### 24/7 AI Booking Assistant
 
-### Pillar 2: 24/7 Conversational AI & Lead Booker (Like Diaxe)
-- **What it does:** Omnichannel AI assistants (SMS/Twilio, Web Chat, Telegram, Phone calls, API) that answer customer inquiries in seconds, handle objections, qualify intent, and directly book appointments onto Google Calendar or Cal.com.
-- **Key Benefit:** Never lose a lead to voicemail or delay again. Complete dashboard analytics, live conversation transcripts, and automated CRM sync.
+Conversational assistants answer questions, qualify leads, handle objections, and help book appointments. The existing product scope includes web chat, SMS through Twilio, Telegram, calls, and API access; calendar options include Google Calendar and Cal.com. It also describes transcripts, dashboard analytics, and CRM synchronization. Confirm the customer's actual channels and integrations before promising a particular connection. Explain this as a helpful booking assistant, not agent orchestration.
 
-### Pillar 3: AI Search Visibility (Next-Gen Organic Acquisition)
-- **What it does:** Audits and structures the company's digital footprint so generative answer engines (ChatGPT Search, Perplexity, Google Gemini Overviews, Claude) cite and recommend the business as the top local authority.
-- **Key Benefit:** Be the default answer when prospective clients ask AI for recommendations in their city.
+### AI Search Visibility
 
----
+Audits and improves the business's digital footprint so AI search tools can better understand and discover it. Work can include structured business information, useful content, and consistent local information. Describe visibility in tools such as ChatGPT, Perplexity, and Google AI search without guaranteeing inclusion, rank, or a deadline for results.
 
-## 4. Finalized Decisions
-- **CTA Model:** Lead Magnet / Audit funnel — Primary CTA is "Get Your Free AI Growth Audit" (user enters their website URL, gets a visibility report, then books a call).
-- **Niche Focus:** Health & Beauty / MedSpa (examples, screenshots, and copy should reference clinics, spas, cosmetic practices, dentists).
-- **Product Structure:** Three separate offerings (not bundled), each with its own deep-dive section. No pricing tiers on the landing page for now.
-- **Visual Style:** Clean Light & Friendly (Stripe / VEED / Intercom aesthetic) — white backgrounds, soft shadows, rounded cards, calming blue-teal accent, maximum readability.
+## Confirmed website decisions — September 24, 2026
 
----
+These decisions supersede the older MedSpa-only, blue-teal landing-page direction.
 
-## 5. Website Funnel & Conversion Blueprint
-1. **Above the Fold (Hero):**
-   - High-impact value proposition addressing time & revenue loss.
-   - Primary CTA: "Get Your Free AI Growth Audit" (input field for website URL).
-   - Secondary CTA: "Book a 15-Min Growth Call".
-   - Interactive proof teaser right in the hero (a realistic product mockup or mini animation).
-2. **Problem Statement Section:**
-   - Three pain-point cards showing what small business owners lose daily (missed calls → lost revenue, hours wasted editing video, invisible to AI search).
-3. **Three Product Deep-Dives:**
-   - Each product gets its own section with a realistic visual mockup, 3 key benefits, and a CTA linking to its own page or booking.
-   - Product 1: AI Video Studio — before/after video timeline mockup.
-   - Product 2: 24/7 AI Booking Assistant — chat widget simulation with calendar confirmation.
-   - Product 3: AI Search Visibility — ChatGPT prompt mockup showing the business recommended.
-4. **Social Proof & Metrics:**
-   - Tangible outcome numbers (e.g., "10+ hrs saved/week", "3× more bookings", "Recommended by ChatGPT in 30 days").
-5. **FAQ Accordion:**
-   - Addressing setup time, technical barrier, data privacy, and support.
-6. **Final CTA Section:**
-   - Full-width banner reiterating the audit CTA with urgency.
-7. **Footer:**
-   - Links to each product, company info, legal, and social media.
+- **Audience:** Different kinds of US small and medium businesses.
+- **Main interactive example:** Booking a tour. Show a customer inquiry, a useful assistant reply, a selectable time, calendar confirmation, and a CRM customer card.
+- **Other scenarios:** Health and beauty, home services, and professional services can illustrate the same workflow.
+- **Primary conversion:** A free AI growth audit, with a business website field and a short contact form.
+- **Current scope:** Website design and front end only. The user explicitly requested a form that will be connected later. Validate inputs locally and clearly identify the preview confirmation; do not imply that a request was delivered.
+- **Offer structure:** Three separate solutions. Do not introduce pricing tiers without new information.
+- **Preservation:** Keep all existing front-end variants. Create new variants separately. The September concept is in `zerde-v3/`; the existing `index.html`, `v2.html`, `zerde-landing.html`, and `assets/` are not part of that redesign.
 
----
+## Visual direction
 
-## 6. Design System Guidelines
-- **Fonts:** Inter or Manrope for body, Unbounded or Plus Jakarta Sans for headlines.
-- **Color Palette:** White (#FFFFFF) background, soft gray (#F7F9FB) surface, teal-blue (#0E6F9E) primary accent, dark navy (#0B1B2B) for text, gold (#B9862A) for highlights.
-- **Cards:** Rounded corners (16px), soft box-shadow, white background on light gray surface.
-- **Spacing:** Generous whitespace — sections padded 80-120px vertically.
-- **Imagery:** Generated realistic UI mockups (not stock photos), inline product screenshots.
-- **Micro-animations:** Subtle fade-in on scroll, hover lifts on cards, smooth accordion transitions.
-- **Responsive:** Mobile-first, single column on mobile, 2-3 column grid on desktop.
-- **Language:** Always simple, outcome-focused English. No jargon.
+- **References:** [Railway](https://railway.com/) for visual explanation through product interfaces and connected workflows; [Aside](https://aside.com/) for interactive product storytelling. Adapt the visual approach to Zerde's own topics and gray palette; do not copy their brand assets or imply a partnership.
+- **Palette:** Predominantly soft gray, off-white, white, and charcoal. Small subdued status accents are appropriate. The exact brand gray hex value has not been supplied.
+- **Layout:** Generous space, confident typography, fine borders, restrained shadows, and readable product scenes. Make the conversation and its result easy to follow.
+- **Typography:** A contemporary sans serif. The September concept uses Manrope for headings and DM Sans for body text.
+- **Product visuals:** Prefer real HTML/CSS/SVG interfaces that can respond to input. Show the assistant completing a concrete task rather than a decorative static dashboard.
+- **Motion:** Purposeful, replayable, pausable sequences; respect reduced-motion preferences. Responsive layouts must retain the booking story and usable controls.
+- **Language:** Marketing copy is English. Communicate with the project owner in Russian unless requested otherwise.
+
+## Suggested landing-page structure
+
+1. Outcome-focused hero and audit CTA.
+2. Interactive product scene with tabs for booking, video creation, and AI search visibility.
+3. A separate explanation of each solution and its business benefit.
+4. Industry examples that change the demo scenario.
+5. Audit, setup, and day-to-day workflow explanation.
+6. FAQ addressing fit, separate offerings, brand voice, tools, and realistic AI search expectations.
+7. Final website input and audit CTA, followed by a concise footer.
+
+Use only verified customer evidence for testimonials, logos, case studies, or growth metrics. Product scenes can use clearly labeled fictional examples. Do not present illustrative AI recommendations as actual search results. The former examples of missed-call percentages, hours saved, booking multipliers, and ranking deadlines were not supported by supplied evidence and must not be published as established Zerde results.
+
+## Details still to confirm before production
+
+- Final brand assets and exact gray palette.
+- Form delivery destination and booking/contact links.
+- Verified customers, case studies, and measurable results.
+- Actual implementation timelines, commercial terms, and privacy/legal copy.
+
+These gaps do not block a local design prototype; do not invent the missing company facts.
