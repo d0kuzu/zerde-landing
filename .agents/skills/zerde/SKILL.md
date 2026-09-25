@@ -62,11 +62,24 @@ These decisions supersede the older MedSpa-only, blue-teal landing-page directio
 
 Use only verified customer evidence for testimonials, logos, case studies, or growth metrics. Product scenes can use clearly labeled fictional examples. Do not present illustrative AI recommendations as actual search results. The former examples of missed-call percentages, hours saved, booking multipliers, and ranking deadlines were not supported by supplied evidence and must not be published as established Zerde results.
 
+## Current first-version decisions — September 25, 2026
+
+These decisions apply to the active redesign of `index.html` and override the September 24 design and conversion choices for this version. Leave `v2.html`, `zerde-landing.html`, and `zerde-v3/` unchanged.
+
+- The owner selected the **first version** as the best direction. Keep its white background, blue accents, soft shadows, rounded cards, Inter body font, and Plus Jakarta Sans headings.
+- Keep the audience broad: US small and medium businesses. The new narrative is **get seen on Instagram, get found through AI search, get booked 24/7**. Product order: Reels → AI search visibility → booking assistant.
+- **Conversion:** Replace the previous website/email forms and simulated audit flow with direct links to [the 30-minute Calendly appointment](https://calendly.com/zerde_ai/30min). No form backend or invented audit score. The entry action is a free growth call.
+- **Real product assets:** The owner supplied `images/ai/` and `images/reels/`. StoryFast is the video studio shown in the Reels screenshots; the Zerde.ai dashboard and conversation screens show the booking assistant. Do not mislabel the assistant UI as AI search visibility.
+- **Privacy:** Blur all customer phone numbers in both conversation images. Publish only permanently redacted derivatives in `assets/products/`; use the same safe assets in galleries and enlarged views. Keep the raw `/images/` uploads ignored by Git.
+- **Interactions:** Use screenshot galleries with labeled tabs and an accessible enlarged view. Show all six video screens and all three assistant screens. Preserve the real interface colors inside the blue-and-white landing design.
+- **Evidence:** The supplied, unedited dashboard shows 16 appointments booked and 34.0% conversion in a selected seven-day reporting period. Describe it as one actual snapshot. No supplied evidence supports 55K views, a #1 ChatGPT ranking, 20 after-hours bookings, or fabricated testimonials.
+- **Commercial copy supplied by owner:** Services from $500/month, no contracts, cancel anytime; individual services are available; setup 1–2 weeks. Do not imply all three services are included for $500. Final scope and price are discussed on the call.
+- **Footer:** © 2026 Zerde LLC.
+
 ## Details still to confirm before production
 
 - Final brand assets and exact gray palette.
-- Form delivery destination and booking/contact links.
 - Verified customers, case studies, and measurable results.
-- Actual implementation timelines, commercial terms, and privacy/legal copy.
+- Exact package inclusions and privacy/legal copy.
 
 These gaps do not block a local design prototype; do not invent the missing company facts.
