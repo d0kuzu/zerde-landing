@@ -625,6 +625,60 @@ summary:focus-visible {
   font-size: 12px;
   margin-top: 8px;
 }
+.product-intro > p > strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-weight: 600;
+}
+.studio-workflow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 19px 22px;
+  gap: 25px;
+  background: var(--tint);
+  border: 1px solid #e0f2fe;
+  border-radius: 14px;
+}
+.studio-workflow li {
+  display: flex;
+  align-items: start;
+  gap: 11px;
+}
+.studio-workflow li > span {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--primary);
+  font-size: 9px;
+  font-weight: 700;
+}
+.studio-workflow strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.studio-workflow p {
+  font-size: 10px;
+  line-height: 1.7;
+}
+@media (max-width: 620px) {
+  .studio-workflow {
+    grid-template-columns: 1fr;
+    padding: 19px;
+    gap: 17px;
+  }
+  .studio-workflow strong {
+    font-size: 11px;
+  }
+}
 .visibility-case {
   margin: 0;
   padding: 28px;

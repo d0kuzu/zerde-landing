@@ -16,9 +16,13 @@ description: Company context, three AI offerings, US small and medium business a
 
 ## Three separate offerings
 
-### AI Video Studio
+### StoryFast by Zerde — AI Video Studio
 
-Turns raw phone footage into social videos. The product description includes scene analysis, removal of filler, hooks and scripts, reordered footage, and AI voiceover or the owner's voice when properly configured. Emphasize turning everyday moments into usable content without a complicated editing workflow. Do not promise virality or a specific production speed without evidence.
+StoryFast is **Zerde's own AI video creation platform**. Customers get access to the software and use it to create their videos; Zerde is not offering manual video editing on their behalf. Describe the workflow as: upload your clips → create with AI → review, refine, and share. Zerde helps with getting started; the customer controls the content and final review.
+
+The product turns raw phone footage into social videos. Features include scene analysis, removal of filler, hooks and scripts, reordered footage, captions, and AI voiceover or the owner's voice when properly configured. Emphasize turning everyday moments into usable content without a complicated editing workflow. Do not promise virality or a specific production speed without evidence.
+
+Use **“StoryFast by Zerde”** or **“StoryFast, our AI video studio.”** Avoid “we make your Reels,” “send us your footage,” or a “make my Reel” CTA that implies a human editing service. Use “upload your clips to StoryFast,” “create your Reel,” and “book a StoryFast demo.” Keep AI search visibility described as a service and the booking offering as an automated assistant; don't imply all three are the same delivery format.
 
 ### 24/7 AI Booking Assistant
 

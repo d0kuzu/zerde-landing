@@ -13,17 +13,17 @@
       ],
     },
     reels: {
-      title: "Inside StoryFast · AI Video Studio",
+      title: "StoryFast by Zerde · Your AI Video Studio",
       slides: [
         [
           "reels-studio.png",
           "StoryFast studio with a completed Reel and controls for footage, script, style, and shots",
-          "Everything for your next Reel, in one studio.",
+          "Your clips, script, and final Reel — in your StoryFast workspace.",
         ],
         [
           "reels-upload.png",
           "StoryFast Media screen for uploading raw footage and adding an optional prompt",
-          "Start with your footage. Add a little direction. Let the studio take it from there.",
+          "Upload your clips to StoryFast and add a prompt to guide your Reel.",
         ],
         [
           "reels-script.png",
