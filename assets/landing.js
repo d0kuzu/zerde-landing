@@ -2,6 +2,16 @@
   "use strict";
 
   const productScreens = {
+    reelsResult: {
+      title: "AI Reels · A real client result",
+      slides: [
+        [
+          "reels-results.jpg",
+          "Original Instagram screenshots: 55.8K views, 240 likes, 32 shares, and comments requesting a tour link",
+          "One Reel: 55.8K views, 240 likes, 32 shares, and viewers asking for the tour link.",
+        ],
+      ],
+    },
     reels: {
       title: "Inside StoryFast · AI Video Studio",
       slides: [
@@ -61,7 +71,6 @@
     },
   };
   const assetPath = "assets/products/";
-  const galleries = new Map();
   const dialog = document.querySelector(".lightbox");
   const modalImage = document.querySelector("#lightbox-image");
   let activeGallery = null;
@@ -116,6 +125,20 @@
     document.querySelector("#lightbox-count").textContent =
       `${modalIndex + 1} / ${product.slides.length}`;
     document.querySelector("#lightbox-caption").textContent = slide[2];
+    dialog
+      .querySelectorAll("[data-lightbox-prev], [data-lightbox-next]")
+      .forEach((button) => {
+        button.hidden = product.slides.length < 2;
+      });
+  }
+
+  function openLightbox(gallery, opener) {
+    activeGallery = gallery;
+    modalOpener = opener;
+    renderLightbox(gallery.index);
+    dialog.showModal();
+    document.body.classList.add("modal-open");
+    dialog.querySelector(".lightbox-close").focus();
   }
 
   document.querySelectorAll("[data-gallery]").forEach((element) => {
@@ -124,7 +147,6 @@
       product: productScreens[element.dataset.gallery],
       index: 0,
     };
-    galleries.set(element.dataset.gallery, gallery);
     element.querySelectorAll('[role="tab"]').forEach((tab) => {
       tab.addEventListener("click", () =>
         renderGallery(gallery, Number(tab.dataset.slide)),
@@ -144,13 +166,17 @@
     element
       .querySelector("[data-open-gallery]")
       .addEventListener("click", (event) => {
-        activeGallery = gallery;
-        modalOpener = event.currentTarget;
-        renderLightbox(gallery.index);
-        dialog.showModal();
-        document.body.classList.add("modal-open");
-        dialog.querySelector(".lightbox-close").focus();
+        openLightbox(gallery, event.currentTarget);
       });
+  });
+
+  document.querySelectorAll("[data-proof-image]").forEach((button) => {
+    button.addEventListener("click", () => {
+      openLightbox(
+        { product: productScreens[button.dataset.proofImage], index: 0 },
+        button,
+      );
+    });
   });
 
   dialog
@@ -181,7 +207,7 @@
   });
   dialog.addEventListener("close", () => {
     document.body.classList.remove("modal-open");
-    if (activeGallery) renderGallery(activeGallery, modalIndex);
+    if (activeGallery?.element) renderGallery(activeGallery, modalIndex);
     modalOpener?.focus({ preventScroll: true });
   });
 

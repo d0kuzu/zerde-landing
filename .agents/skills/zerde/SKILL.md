@@ -72,9 +72,20 @@ These decisions apply to the active redesign of `index.html` and override the Se
 - **Real product assets:** The owner supplied `images/ai/` and `images/reels/`. StoryFast is the video studio shown in the Reels screenshots; the Zerde.ai dashboard and conversation screens show the booking assistant. Do not mislabel the assistant UI as AI search visibility.
 - **Privacy:** Blur all customer phone numbers in both conversation images. Publish only permanently redacted derivatives in `assets/products/`; use the same safe assets in galleries and enlarged views. Keep the raw `/images/` uploads ignored by Git.
 - **Interactions:** Use screenshot galleries with labeled tabs and an accessible enlarged view. Show all six video screens and all three assistant screens. Preserve the real interface colors inside the blue-and-white landing design.
-- **Evidence:** The supplied, unedited dashboard shows 16 appointments booked and 34.0% conversion in a selected seven-day reporting period. Describe it as one actual snapshot. No supplied evidence supports 55K views, a #1 ChatGPT ranking, 20 after-hours bookings, or fabricated testimonials.
+- **Evidence:** The supplied, unedited dashboard shows 16 appointments booked and 34.0% conversion in a selected seven-day reporting period. Describe it as one actual snapshot. See the September 26 additions below for the newly supplied Reels and AI visibility evidence. Do not invent after-hours attribution or testimonials.
 - **Commercial copy supplied by owner:** Services from $500/month, no contracts, cancel anytime; individual services are available; setup 1–2 weeks. Do not imply all three services are included for $500. Final scope and price are discussed on the call.
 - **Footer:** © 2026 Zerde LLC.
+
+## Results-focused revision — September 26, 2026
+
+These decisions supersede the first version's previous pricing presentation and evidence limitations.
+
+- **Remove pricing:** No price section, Pricing navigation item, $500 mention in the hero or metadata, or pricing FAQ. Keep Calendly as the conversion action.
+- **Reels proof:** Use the owner's `images/reels/example.jpg`, copied unchanged to `assets/products/reels-results.jpg`. This collage shows 55.8K views, 240 likes, 32 shares/sends, and two visible comments using “MATH” to request the tour link for a hairstyling-school Reel. Frame this as engagement leading to inquiries. It does not establish a number of paying customers, completed bookings, revenue, or attribution to the separate booking dashboard.
+- **AI visibility proof:** The owner confirmed that a client's positions improved from 4–5 to 1–2. Present an anonymous, abstract before/after infographic for selected queries. No specific client name, query, platform, duration, revenue, or percentage lift has been supplied. Do not imply this is a screenshot, live ranking, or a universal guarantee. Keep the placement variability note small and at the bottom of the section.
+- **Make outcomes prominent:** An early results summary links to the Reel case, AI visibility comparison, and the existing 16-booking/34% dashboard. Use real numbers with their units and context. Keep these as distinct examples.
+- **Tone:** Carry the concise “Get seen. Get found. Get booked.” rhythm into subheadings and conversational FAQ questions. Keep answers clear and useful.
+- **Preserve:** The first version's blue-and-white design, full product galleries, phone-number redactions, Calendly links, and the separate second and third versions.
 
 ## Details still to confirm before production
 
