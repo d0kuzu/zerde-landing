@@ -91,6 +91,12 @@ These decisions supersede the first version's previous pricing presentation and 
 - **Tone:** Carry the concise “Get seen. Get found. Get booked.” rhythm into subheadings and conversational FAQ questions. Keep answers clear and useful.
 - **Preserve:** The first version's blue-and-white design, full product galleries, phone-number redactions, Calendly links, and the separate second and third versions.
 
+## Consultation and product selection — September 26, 2026
+
+- **Consultation offer:** A free 30-minute conversation to discuss the business's task, demonstrate the relevant product or explain the AI visibility service, and identify a practical next step. Use “Book my free consultation” and “See the tools. Find your fit. Leave with a clear next step.” Do not promise a completed audit, written report, or implementation during the call.
+- **Task-based navigation:** Put three entry cards immediately after the hero: “I need more content” → StoryFast, “I want to get found” → AI visibility, and “I'm missing inquiries” → the booking assistant. Each links to the corresponding existing product section and its case evidence. The previous standalone problem cards are replaced to avoid repeating the same choice.
+- **Calendly:** Keep the existing `https://calendly.com/zerde_ai/30min` booking link. The proposed event title is “Zerde Demo & Growth Consultation”; the exact prepared description and external publication status are recorded in `docs/calendly-meeting-copy.md` at the repository root. Do not claim the Calendly event was renamed unless its public page has been verified after saving.
+
 ## Details still to confirm before production
 
 - Final brand assets and exact gray palette.
