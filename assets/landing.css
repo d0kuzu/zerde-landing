@@ -831,6 +831,105 @@ h2 {
 .gallery-tabs button:hover {
   border-color: #dceecb;
 }
+.gallery-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 0 24px 23px;
+}
+.gallery-controls .gallery-tabs {
+  flex: 0 1 auto;
+  min-width: 0;
+  justify-content: flex-start;
+  padding: 0;
+  overscroll-behavior-x: contain;
+}
+.gallery-controls .gallery-tabs button {
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease;
+}
+.gallery-autoplay {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid #ffffff32;
+  border-radius: 50%;
+  background: #ffffff08;
+  color: var(--lime);
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+.gallery-autoplay:hover {
+  border-color: #dceecb;
+  background: #ffffff14;
+}
+.gallery-autoplay .icon {
+  width: 17px;
+  height: 17px;
+}
+.visibility-gallery .gallery-autoplay {
+  border-color: #b2c1a7;
+  background: #f6f7f24d;
+  color: var(--ink);
+}
+.visibility-gallery .gallery-autoplay:hover {
+  border-color: #78936c;
+  background: #f6f7f2b3;
+}
+.gallery-panel {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+.gallery-panel.is-changing {
+  opacity: 0;
+  transform: translateY(6px);
+}
+@media (max-width: 760px) {
+  .gallery-controls {
+    gap: 8px;
+    padding: 0 18px 20px;
+  }
+  .gallery-controls .gallery-tabs {
+    gap: 5px;
+  }
+  .gallery-controls .gallery-tabs button {
+    min-height: 44px;
+    padding-inline: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .gallery-controls {
+    gap: 6px;
+    padding-inline: 12px;
+  }
+  .gallery-controls .gallery-tabs {
+    gap: 4px;
+  }
+  .gallery-controls .gallery-tabs button {
+    padding-inline: 8px;
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-panel,
+  .gallery-panel.is-changing {
+    transition: none;
+    transform: none;
+  }
+}
 .gallery-image {
   display: block;
   position: relative;
@@ -938,6 +1037,7 @@ h2 {
 .podium-school {
   display: block;
   width: 100%;
+  min-height: 2.8em;
   max-width: 17ch;
   margin-bottom: 18px;
   padding-inline: 5px;
