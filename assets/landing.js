@@ -3,69 +3,65 @@
 
   const productScreens = {
     reelsResult: {
-      title: "AI Reels · A real client result",
+      title: "Reels · A real client result",
       slides: [
         [
           "reels-results.jpg",
           "Original Instagram screenshots: 55.8K views, 240 likes, 32 shares, and comments requesting a tour link",
-          "One Reel: 55.8K views, 240 likes, 32 shares, and viewers asking for the tour link.",
+          "55.8K views. 32 shares. Real tour inquiries.",
         ],
       ],
     },
-    reels: {
-      title: "StoryFast by Zerde · Your AI Video Studio",
+    visibility: {
+      title: "Search visibility · Cinta Aveda Institute",
       slides: [
         [
-          "reels-studio.png",
-          "StoryFast studio with a completed Reel and controls for footage, script, style, and shots",
-          "Your clips, script, and final Reel — in your StoryFast workspace.",
+          "visibility-chatgpt-01.png",
+          "ChatGPT answer listing Cinta Aveda Institute first among Bay Area beauty schools",
+          "Cinta Aveda Institute. First in this answer.",
         ],
         [
-          "reels-upload.png",
-          "StoryFast Media screen for uploading raw footage and adding an optional prompt",
-          "Upload your clips to StoryFast and add a prompt to guide your Reel.",
+          "visibility-chatgpt-02.png",
+          "ChatGPT comparison table listing Cinta Aveda Institute second among Bay Area beauty schools",
+          "Another answer. Cinta Aveda Institute is in the top two.",
+        ],
+      ],
+      rankings: [
+        [
+          ["Cinta Aveda Institute", "Cinta Aveda Institute"],
+          ["Paul Mitchell", "Paul Mitchell The School East Bay"],
+          [
+            "SF Institute",
+            "San Francisco Institute of Esthetics and Cosmetology",
+          ],
         ],
         [
-          "reels-script.png",
-          "StoryFast script editor with AI suggestions and controls for shortening or rewriting the script",
-          "Find the hook. Refine the script. Make every word sound like your business.",
-        ],
-        [
-          "reels-voices.png",
-          "StoryFast AI voice library with preview controls and voice choices",
-          "Choose the voice that fits your brand, from a built-in voice library.",
-          true,
-        ],
-        [
-          "reels-own-voice.png",
-          "StoryFast settings for a custom AI voice, including style and accent",
-          "Make it your own: customize your AI voice and its style.",
-          true,
-        ],
-        [
-          "reels-dashboard.png",
-          "StoryFast dashboard showing drafted and completed Reels in one place",
-          "Keep your drafts and finished Reels together, ready for your next post.",
+          [
+            "SF Institute",
+            "San Francisco Institute of Esthetics and Cosmetology",
+          ],
+          ["Cinta Aveda Institute", "Cinta Aveda Institute"],
+          ["J D Academy", "J D Academy of Salon and Spa"],
         ],
       ],
     },
     assistant: {
-      title: "Inside Zerde · 24/7 Booking Assistant",
+      title: "Booking automation · Client examples",
       slides: [
         [
           "assistant-dashboard.png",
           "Zerde dashboard showing 47 conversations started, 16 appointments booked, and 34 percent conversion in seven days",
-          "Conversations and bookings. A clear view of your week.",
+          "16 bookings in one 7-day snapshot.",
         ],
         [
           "assistant-conversation-redacted.png",
           "Zerde assistant answering questions about a hairstyling program; customer phone numbers are blurred",
-          "See how the assistant explains a service and answers a customer’s questions.",
+          "A question answered. A conversation moving forward.",
         ],
         [
           "assistant-conversations-redacted.png",
           "Zerde conversation inbox with agent, status, and message counts; all customer phone numbers are blurred",
-          "Every conversation in one place, with its status and message history.",
+          "Every conversation, in one place.",
         ],
       ],
     },
@@ -73,18 +69,45 @@
   const assetPath = "assets/products/";
   const dialog = document.querySelector(".lightbox");
   const modalImage = document.querySelector("#lightbox-image");
+  const imageWrap = dialog.querySelector(".lightbox-image-wrap");
+  const zoomButton = dialog.querySelector("[data-lightbox-zoom]");
   let activeGallery = null;
   let modalIndex = 0;
   let modalOpener = null;
+
+  function setLightboxZoom(zoomed) {
+    dialog.classList.toggle("is-zoomed", zoomed);
+    if (zoomButton) {
+      zoomButton.setAttribute("aria-pressed", String(zoomed));
+      zoomButton.setAttribute("aria-label", zoomed ? "Zoom out" : "Zoom in");
+      zoomButton.textContent = zoomed ? "Zoom out" : "Zoom in";
+    }
+    imageWrap.scrollLeft = 0;
+    imageWrap.scrollTop = 0;
+  }
 
   function renderGallery(gallery, index, focusTab = false) {
     const { element, product } = gallery;
     gallery.index = (index + product.slides.length) % product.slides.length;
     const slide = product.slides[gallery.index];
     const img = element.querySelector(".gallery-image img");
-    img.src = assetPath + slide[0];
-    img.alt = slide[1];
-    img.classList.toggle("portrait", Boolean(slide[3]));
+    if (img) {
+      img.src = assetPath + slide[0];
+      img.alt = slide[1];
+      img.classList.toggle("portrait", Boolean(slide[3]));
+    }
+    if (product.rankings) {
+      const ranking = product.rankings[gallery.index];
+      element.querySelectorAll(".podium-place").forEach((place, index) => {
+        const [label, fullName] = ranking[index];
+        place.querySelector(".podium-school").textContent = label;
+        place.setAttribute("aria-label", `${index + 1}. ${fullName}`);
+        place.classList.toggle(
+          "is-featured",
+          fullName === "Cinta Aveda Institute",
+        );
+      });
+    }
     element.querySelector(".caption-number").textContent =
       `${String(gallery.index + 1).padStart(2, "0")} / ${String(product.slides.length).padStart(2, "0")}`;
     element.querySelector(".gallery-caption p").textContent = slide[2];
@@ -101,7 +124,9 @@
       .querySelector("[data-open-gallery]")
       .setAttribute(
         "aria-label",
-        `Enlarge screenshot: ${tabs[gallery.index].textContent}`,
+        element.dataset.gallery === "visibility"
+          ? `See the ChatGPT answer: ${tabs[gallery.index].textContent}`
+          : `Enlarge screenshot: ${tabs[gallery.index].textContent}`,
       );
     if (focusTab) tabs[gallery.index].focus({ preventScroll: true });
     // Keep a keyboard-selected tab visible without moving the page vertically.
@@ -116,6 +141,7 @@
   }
 
   function renderLightbox(index) {
+    setLightboxZoom(false);
     const { product } = activeGallery;
     modalIndex = (index + product.slides.length) % product.slides.length;
     const slide = product.slides[modalIndex];
@@ -142,9 +168,34 @@
   }
 
   document.querySelectorAll("[data-gallery]").forEach((element) => {
+    const product = productScreens[element.dataset.gallery];
+    // An empty visibility gallery is intentionally hidden until real proof arrives.
+    if (!product?.slides.length) return;
+
+    if (element.dataset.gallery === "visibility") {
+      const tablist = element.querySelector('[role="tablist"]');
+      const panel = element.querySelector('[role="tabpanel"]');
+      product.slides.forEach((slide, index) => {
+        const tab = document.createElement("button");
+        tab.type = "button";
+        tab.id = `visibility-tab-${index}`;
+        tab.setAttribute("role", "tab");
+        tab.setAttribute("aria-controls", panel.id);
+        tab.dataset.slide = String(index);
+        tab.textContent = `Example ${index + 1}`;
+        tablist.append(tab);
+      });
+      element.hidden = false;
+      document
+        .querySelectorAll("[data-visibility-fallback]")
+        .forEach((fallback) => {
+          fallback.hidden = true;
+        });
+    }
+
     const gallery = {
       element,
-      product: productScreens[element.dataset.gallery],
+      product,
       index: 0,
     };
     element.querySelectorAll('[role="tab"]').forEach((tab) => {
@@ -168,20 +219,23 @@
       .addEventListener("click", (event) => {
         openLightbox(gallery, event.currentTarget);
       });
+    renderGallery(gallery, 0);
   });
 
   document.querySelectorAll("[data-proof-image]").forEach((button) => {
+    const product = productScreens[button.dataset.proofImage];
+    if (!product?.slides.length) return;
     button.addEventListener("click", () => {
-      openLightbox(
-        { product: productScreens[button.dataset.proofImage], index: 0 },
-        button,
-      );
+      openLightbox({ product, index: 0 }, button);
     });
   });
 
   dialog
     .querySelector(".lightbox-close")
     .addEventListener("click", () => dialog.close());
+  zoomButton?.addEventListener("click", () => {
+    setLightboxZoom(!dialog.classList.contains("is-zoomed"));
+  });
   dialog
     .querySelector("[data-lightbox-prev]")
     .addEventListener("click", () => renderLightbox(modalIndex - 1));
@@ -231,7 +285,7 @@
       menuButton.focus();
     }
   });
-  const desktopQuery = window.matchMedia("(min-width: 621px)");
+  const desktopQuery = window.matchMedia("(min-width: 761px)");
   desktopQuery.addEventListener("change", (event) => {
     if (event.matches) setMenu(false);
   });

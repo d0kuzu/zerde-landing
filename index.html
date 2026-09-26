@@ -2,12 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0284c7" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f6f7f2" />
     <title>Zerde — Get Seen. Get Found. Get Booked.</title>
     <meta
       name="description"
-      content="Create Reels with StoryFast, Zerde's AI video platform. Grow your AI search visibility and automate bookings with Zerde. Built for US small and medium businesses."
+      content="Reels, search visibility, and booking automation for local businesses. We take care of it. Start with a free 30-minute Zerde consultation."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -16,20 +19,21 @@
     />
     <meta
       property="og:description"
-      content="Less time editing and answering messages. More time growing your business. Explore Zerde's real video and booking tools."
+      content="Reels made for you. A stronger search presence. Bookings around the clock. More time for your business."
     />
-    <meta
-      property="og:image"
-      content="assets/products/assistant-dashboard.png"
+    <meta property="og:image" content="assets/products/reels-results.jpg" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231b392f'/%3E%3Cpath d='M19 20h27L19 44h27' stroke='%23d9f99a' stroke-width='6' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/landing.css" />
-    <script src="assets/landing.js" defer></script>
+    <link rel="stylesheet" href="assets/landing.css?v=7ffa834026b6" />
+    <script src="assets/landing.js?v=881c9a08f0c3" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -41,29 +45,31 @@
         <symbol id="i-arrow" viewBox="0 0 24 24">
           <path d="M5 12h14m-6-6 6 6-6 6" />
         </symbol>
-        <symbol id="i-check" viewBox="0 0 24 24">
-          <path d="m5 12 4 4L19 6" />
+        <symbol id="i-diagonal" viewBox="0 0 24 24">
+          <path d="M6 18 18 6M6 6h12v12" />
         </symbol>
         <symbol id="i-video" viewBox="0 0 24 24">
-          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <rect x="3" y="3" width="18" height="18" rx="6" />
           <path d="m10 8 6 4-6 4V8Z" />
         </symbol>
         <symbol id="i-search" viewBox="0 0 24 24">
           <circle cx="10.5" cy="10.5" r="6.5" />
-          <path d="m16 16 5 5m-13-10h5m-2.5-2.5v5" />
+          <path d="m16 16 5 5" />
         </symbol>
         <symbol id="i-chat" viewBox="0 0 24 24">
           <path
-            d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9H13a8.5 8.5 0 0 1 8 8v.5Z"
+            d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5Z"
           />
-          <path d="M8 11h8m-8 4h4" />
+          <path d="M8 10h8m-8 4h5" />
         </symbol>
         <symbol id="i-expand" viewBox="0 0 24 24">
           <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" />
         </symbol>
-        <symbol id="i-calendar" viewBox="0 0 24 24">
-          <rect x="3" y="5" width="18" height="16" rx="3" />
-          <path d="M16 3v4M8 3v4M3 11h18m-13 5 2 2 5-4" />
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path d="m5 12 4 4L19 6" />
+        </symbol>
+        <symbol id="i-spark" viewBox="0 0 48 48">
+          <path d="M24 3v42M3 24h42M9 9l30 30M9 39 39 9" />
         </symbol>
       </defs>
     </svg>
@@ -71,25 +77,25 @@
     <header class="site-nav" id="mainNavbar">
       <div class="container nav-inner">
         <a class="brand" href="#" aria-label="Zerde home"
-          ><span class="brand-icon"
-            ><svg class="icon"><use href="#i-logo" /></svg></span
+          ><svg class="icon brand-icon" aria-hidden="true">
+            <use href="#i-logo" /></svg
           >Zerde<span class="brand-period">.</span></a
         >
         <nav class="nav-links" aria-label="Main navigation">
           <a href="#video-studio">Reels</a
-          ><a href="#ai-visibility">AI visibility</a
-          ><a href="#ai-assistant">24/7 booking</a
-          ><a href="#results">Results</a>
+          ><a href="#ai-visibility">Search visibility</a
+          ><a href="#ai-assistant">24/7 booking</a>
         </nav>
         <div class="nav-actions">
           <a
-            class="btn btn-primary btn-small"
+            class="btn btn-small"
             href="https://calendly.com/zerde_ai/30min"
             target="_blank"
             rel="noopener noreferrer"
-            >Book a call <svg class="icon"><use href="#i-arrow" /></svg
-          ></a>
-          <button
+            >Let’s talk
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-diagonal" /></svg></a
+          ><button
             class="menu-toggle"
             aria-label="Open navigation"
             aria-expanded="false"
@@ -105,683 +111,434 @@
         aria-label="Mobile navigation"
         hidden
       >
-        <a href="#video-studio">Reels</a
-        ><a href="#ai-visibility">AI visibility</a
-        ><a href="#ai-assistant">24/7 booking</a><a href="#results">Results</a
-        ><a href="#faq">FAQ</a>
+        <a href="#video-studio">Reels <span aria-hidden="true">↗</span></a
+        ><a href="#ai-visibility"
+          >Search visibility <span aria-hidden="true">↗</span></a
+        ><a href="#ai-assistant"
+          >24/7 booking <span aria-hidden="true">↗</span></a
+        ><a href="#faq">A few questions <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
 
     <main id="main">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <span class="badge"
-              ><span class="status-dot"></span> Big growth. Small business
-              friendly.</span
-            >
-            <h1>
-              Get seen.<br />Get found.<br /><span class="gradient-text"
-                >Get fully booked.</span
-              >
-            </h1>
-            <p class="lead">
-              Your work on Instagram. Your business on ChatGPT. Your next client
-              on the calendar.
-            </p>
-            <p class="hero-description">
-              Create Reels with StoryFast, our AI video studio. Grow your AI
-              search presence and let our assistant handle bookings 24/7.
-            </p>
-            <div class="hero-actions">
-              <a
-                class="btn btn-primary"
-                href="https://calendly.com/zerde_ai/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Book my free consultation
-                <svg class="icon"><use href="#i-arrow" /></svg></a
-              ><a class="text-link" href="#solutions"
-                >Find my starting point <span aria-hidden="true">↘</span></a
-              >
-            </div>
-            <p class="cta-note">
-              <strong>Free · 30 minutes.</strong> See the tools. Find your
-              fit.<br />Leave with a clear next step.
-            </p>
-            <div class="hero-terms">
-              <span
-                ><svg class="icon"><use href="#i-check" /></svg> Real
-                results</span
-              ><span
-                ><svg class="icon"><use href="#i-check" /></svg> No
-                contracts</span
-              ><span
-                ><svg class="icon"><use href="#i-check" /></svg> Built for US
-                businesses</span
-              >
-            </div>
-          </div>
-          <div class="hero-visual" aria-label="A look inside Zerde's products">
-            <div class="visual-halo"></div>
-            <a class="hero-window hero-window-video" href="#video-studio"
-              ><div class="window-bar">
-                <span class="window-dots"><i></i><i></i><i></i></span
-                ><span>StoryFast by Zerde · Your AI video studio</span
-                ><svg class="icon"><use href="#i-video" /></svg>
-              </div>
-              <img
-                src="assets/products/reels-studio.png"
-                alt="StoryFast video studio with a completed Reel and editing options"
-                width="1334"
-                height="674"
-                fetchpriority="high"
-            /></a>
-            <a class="hero-window hero-window-booking" href="#ai-assistant"
-              ><div class="window-bar">
-                <span class="window-dots"><i></i><i></i><i></i></span
-                ><span>Your front desk, always on</span
-                ><span class="live-label"
-                  ><span class="status-dot"></span> 24/7</span
-                >
-              </div>
-              <img
-                src="assets/products/assistant-dashboard.png"
-                alt="Zerde assistant dashboard showing conversations and booked appointments"
-                width="1333"
-                height="682"
-                fetchpriority="high"
-            /></a>
-            <div class="hero-result">
-              <span class="result-icon"
-                ><svg class="icon"><use href="#i-calendar" /></svg
-              ></span>
-              <div>
-                <strong>16 appointments booked</strong
-                ><span>One dashboard. A real 7-day snapshot.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container audience-strip">
-          <span>For businesses built around people</span>
-          <div>
-            <span>Beauty & wellness</span><span>Home services</span
-            ><span>Tours & experiences</span><span>Professional services</span>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="goal-section"
-        id="solutions"
-        aria-labelledby="goal-heading"
-      >
-        <div class="container">
-          <div class="goal-heading">
-            <span class="eyebrow">Start with your goal</span>
-            <h2 id="goal-heading">
-              What would make<br class="mobile-break" />
-              your day easier?
-            </h2>
-            <p>
-              Pick what you need. Find the product and the results behind it.
-            </p>
-          </div>
-          <div class="goal-grid">
-            <a class="goal-card" href="#video-studio"
-              ><span class="goal-icon"
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-video" /></svg
-              ></span>
-              <h3>I need more content.</h3>
-              <p>Turn your clips into Reels with our AI video platform.</p>
-              <span class="goal-destination"
-                ><span>Explore StoryFast by Zerde</span
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" /></svg></span
-            ></a>
-            <a class="goal-card" href="#ai-visibility"
-              ><span class="goal-icon"
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-search" /></svg
-              ></span>
-              <h3>I want to get found.</h3>
-              <p>Help customers discover your business in AI search.</p>
-              <span class="goal-destination"
-                ><span>Explore AI visibility</span
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" /></svg></span
-            ></a>
-            <a class="goal-card" href="#ai-assistant"
-              ><span class="goal-icon"
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-chat" /></svg
-              ></span>
-              <h3>I'm missing inquiries.</h3>
-              <p>
-                Keep conversations moving and book clients around the clock.
-              </p>
-              <span class="goal-destination"
-                ><span>Meet your booking assistant</span
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" /></svg></span
-            ></a>
-          </div>
-          <p class="goal-help">
-            Not sure where to start?
-            <a href="#consultation"
-              >We'll help you find your fit on a free call
-              <span aria-hidden="true">↗</span></a
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="container hero-inner">
+          <p class="eyebrow hero-eyebrow">
+            <span class="status-dot"></span> For local businesses
+          </p>
+          <h1 id="hero-heading">
+            <span class="hero-line">Get seen.</span>
+            <span class="hero-line">Get found.</span><br /><span
+              class="hero-line"
+              >Get
+              <span class="hero-highlight"
+                >booked.<svg viewBox="0 0 370 20" aria-hidden="true">
+                  <path d="M5 13Q160-3 365 8M31 18Q207 6 340 12" /></svg></span
+            ></span>
+          </h1>
+          <p class="hero-lead">
+            Reels. Search visibility. Booking automation.<br /><span
+              >We take care of it.</span
             >
           </p>
-        </div>
-      </section>
-
-      <section
-        class="results-section"
-        id="results"
-        aria-labelledby="results-heading"
-      >
-        <div class="container">
-          <div class="results-heading">
-            <span class="eyebrow">The work. The impact.</span>
-            <h2 id="results-heading">
-              Real businesses.<br class="mobile-break" />
-              Real results.
-            </h2>
-            <p>
-              More eyes on your work. More people finding you. More spots on the
-              calendar.
-            </p>
-          </div>
-          <div class="results-grid">
-            <a class="result-summary" href="#reels-results"
-              ><span class="result-category"
-                ><svg class="icon"><use href="#i-video" /></svg> AI REELS</span
-              ><strong class="result-number">55.8K<span>views</span></strong>
-              <p>One Reel. 32 shares. People asking for the tour link.</p>
-              <span class="result-source"
-                >See the Reel's results <span aria-hidden="true">↗</span></span
-              ></a
-            >
-            <a class="result-summary" href="#visibility-results"
-              ><span class="result-category"
-                ><svg class="icon"><use href="#i-search" /></svg> AI
-                VISIBILITY</span
-              ><strong class="result-rank"
-                ><span>4–5</span
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" /></svg
-                >1–2</strong
-              >
-              <p>
-                From lower positions to the first recommendations on selected
-                queries.
-              </p>
-              <span class="result-source"
-                >See the before & after <span aria-hidden="true">↗</span></span
-              ></a
-            >
-            <a class="result-summary" href="#ai-assistant"
-              ><span class="result-category"
-                ><svg class="icon"><use href="#i-calendar" /></svg> AI
-                BOOKING</span
-              ><strong class="result-number">16<span>bookings</span></strong>
-              <p>
-                One 7-day snapshot. 34% of conversations converted to bookings.
-              </p>
-              <span class="result-source"
-                >See the booking dashboard
-                <span aria-hidden="true">↗</span></span
-              ></a
-            >
-          </div>
-        </div>
-      </section>
-
-      <section class="section product-section" id="video-studio">
-        <div class="container">
-          <div class="product-heading">
-            <div>
-              <span class="eyebrow"
-                ><span class="section-number">01</span> StoryFast by Zerde</span
-              >
-              <h2>
-                One raw clip.<br /><span class="gradient-text"
-                  >Your next great Reel.</span
-                >
-              </h2>
-            </div>
-            <div class="product-intro">
-              <p>
-                <strong>Our AI video platform. Your creative control.</strong>
-                Upload your clips to StoryFast, shape the script and voice, then
-                generate a Reel you can review and share.
-              </p>
-              <a
-                class="text-link"
-                href="https://calendly.com/zerde_ai/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Book a StoryFast demo
-                <svg class="icon"><use href="#i-arrow" /></svg
-              ></a>
-            </div>
-          </div>
-          <article
-            class="reels-case"
-            id="reels-results"
-            aria-labelledby="reels-case-title"
-          >
-            <div class="reels-case-visual">
-              <div class="case-topline">
-                <span
-                  ><span class="status-dot"></span> One Reel. Real
-                  engagement.</span
-                ><span>Instagram · Client example</span>
-              </div>
-              <button
-                class="case-image"
-                data-proof-image="reelsResult"
-                aria-label="Enlarge the Instagram results: views, shares, and tour inquiries"
-              >
-                <img
-                  src="assets/products/reels-results.jpg"
-                  alt="Three Instagram screenshots of a hairstyling-school Reel: 55.8K views, 240 likes, 32 shares, and two visible comments requesting the tour link"
-                  width="1280"
-                  height="720"
-                  loading="lazy"
-                />
-                <span class="zoom-label"
-                  ><svg class="icon"><use href="#i-expand" /></svg> View the
-                  results</span
-                >
-              </button>
-              <div class="reel-story">
-                <span>They watched.</span
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" /></svg
-                ><span>They shared.</span
-                ><svg class="icon" aria-hidden="true">
-                  <use href="#i-arrow" /></svg
-                ><strong>They asked.</strong>
-              </div>
-            </div>
-            <div class="reels-case-copy">
-              <span class="eyebrow">Attention that starts a conversation</span>
-              <h3 id="reels-case-title">
-                From the feed.<br />To the next step.
-              </h3>
-              <div class="reel-main-stat">
-                <strong>55.8K</strong><span>views on one Reel</span>
-              </div>
-              <div class="reel-small-stats">
-                <div><strong>240</strong><span>likes</span></div>
-                <div><strong>32</strong><span>shares</span></div>
-              </div>
-              <div class="inquiry-proof">
-                <span class="inquiry-icon"
-                  ><svg class="icon"><use href="#i-chat" /></svg
-                ></span>
-                <p>
-                  <strong>“MATH” → send me the tour link.</strong>Real viewers
-                  took the next step: they commented to learn more about the
-                  school.
-                </p>
-              </div>
-              <p class="case-caption">
-                Engagement shown in the original client screenshots.
-              </p>
-            </div>
-          </article>
-          <div class="walkthrough-heading">
-            <span class="eyebrow">StoryFast by Zerde · AI video software</span>
-            <h3>You create. StoryFast assists.</h3>
-            <p>
-              You get access to our video platform. We help you get started; you
-              use StoryFast to create and refine your Reels.
-            </p>
-          </div>
-          <ol
-            class="studio-workflow"
-            aria-label="How you create a Reel in StoryFast"
-          >
-            <li>
-              <span>01</span>
-              <div>
-                <strong>Upload your clips.</strong>
-                <p>Start with footage you've already filmed.</p>
-              </div>
-            </li>
-            <li>
-              <span>02</span>
-              <div>
-                <strong>Create with AI.</strong>
-                <p>Generate your Reel with scripts, captions, and voiceover.</p>
-              </div>
-            </li>
-            <li>
-              <span>03</span>
-              <div>
-                <strong>Review. Refine. Share.</strong>
-                <p>Make it yours, then publish when you're ready.</p>
-              </div>
-            </li>
-          </ol>
-          <div class="product-workspace reels-workspace">
-            <div class="product-benefits">
-              <span class="product-label"
-                ><svg class="icon"><use href="#i-video" /></svg> StoryFast
-                <span>by Zerde</span></span
-              >
-              <h3>Your footage.<br />Your voice.<br />Your studio.</h3>
-              <ul class="feature-list">
-                <li>
-                  <span class="feature-check">✓</span>
-                  <div>
-                    <strong>Keep the moments. Cut the work.</strong>
-                    <p>Turn everyday footage into a story worth watching.</p>
-                  </div>
-                </li>
-                <li>
-                  <span class="feature-check">✓</span>
-                  <div>
-                    <strong>Your words. Your voice.</strong>
-                    <p>
-                      Shape the script, add captions, and choose or create your
-                      AI voice.
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <span class="feature-check">✓</span>
-                  <div>
-                    <strong>One Reel. Every feed.</strong>
-                    <p>Content for Instagram, TikTok, and YouTube Shorts.</p>
-                  </div>
-                </li>
-              </ul>
-              <div class="platform-tags">
-                <span>Instagram</span><span>TikTok</span><span>Shorts</span>
-              </div>
-            </div>
-            <div class="gallery" data-gallery="reels">
-              <div class="gallery-topline">
-                <span
-                  ><span class="status-dot"></span> StoryFast by Zerde · Your
-                  workspace</span
-                ><span>Explore the workflow ↓</span>
-              </div>
-              <div
-                class="gallery-tabs"
-                role="tablist"
-                aria-label="Video studio screens"
-              >
-                <button
-                  id="reels-tab-0"
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="reels-panel"
-                  data-slide="0"
-                >
-                  Studio</button
-                ><button
-                  id="reels-tab-1"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="reels-panel"
-                  tabindex="-1"
-                  data-slide="1"
-                >
-                  Upload</button
-                ><button
-                  id="reels-tab-2"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="reels-panel"
-                  tabindex="-1"
-                  data-slide="2"
-                >
-                  Script</button
-                ><button
-                  id="reels-tab-3"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="reels-panel"
-                  tabindex="-1"
-                  data-slide="3"
-                >
-                  AI voices</button
-                ><button
-                  id="reels-tab-4"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="reels-panel"
-                  tabindex="-1"
-                  data-slide="4"
-                >
-                  Your voice</button
-                ><button
-                  id="reels-tab-5"
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="reels-panel"
-                  tabindex="-1"
-                  data-slide="5"
-                >
-                  Dashboard
-                </button>
-              </div>
-              <div
-                class="gallery-panel"
-                id="reels-panel"
-                role="tabpanel"
-                aria-labelledby="reels-tab-0"
-              >
-                <button
-                  class="gallery-image"
-                  data-open-gallery
-                  aria-label="Enlarge video studio screenshot"
-                >
-                  <img
-                    src="assets/products/reels-studio.png"
-                    alt="StoryFast studio with a finished Reel, script, style, and shot editing controls"
-                    width="1334"
-                    height="674"
-                    loading="lazy"
-                  /><span class="zoom-label"
-                    ><svg class="icon"><use href="#i-expand" /></svg> Take a
-                    closer look</span
-                  >
-                </button>
-                <div class="gallery-caption" aria-live="polite">
-                  <span class="caption-number">01 / 06</span>
-                  <p>
-                    Your clips, script, and final Reel — in your StoryFast
-                    workspace.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section visibility-section" id="ai-visibility">
-        <div class="container visibility-grid">
-          <div class="visibility-copy">
-            <span class="eyebrow"
-              ><span class="section-number">02</span> Show up on ChatGPT</span
-            >
-            <h2>
-              Get found.<br /><span class="gradient-text">Get considered.</span>
-            </h2>
-            <p class="lead">
-              Move up the answer. Get in front of your next customer.
-            </p>
-            <p>
-              We've helped a client move from positions 4–5 to positions 1–2 on
-              selected AI search queries. We help your business build a stronger
-              presence, too.
-            </p>
-            <ul class="feature-list">
-              <li>
-                <span class="feature-check">✓</span>
-                <div>
-                  <strong>Find the gaps. Build your presence.</strong>
-                  <p>
-                    Track your visibility on ChatGPT, Perplexity, and Gemini.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <span class="feature-check">✓</span>
-                <div>
-                  <strong>Clear services. Stronger signals.</strong>
-                  <p>
-                    Clear services, consistent business details, and useful
-                    reviews.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <span class="feature-check">✓</span>
-                <div>
-                  <strong>Track it. Keep improving.</strong>
-                  <p>A weekly visibility report, with practical next steps.</p>
-                </div>
-              </li>
-            </ul>
+          <div class="hero-actions">
             <a
-              class="btn btn-primary"
+              class="btn"
               href="https://calendly.com/zerde_ai/30min"
               target="_blank"
               rel="noopener noreferrer"
-              >Let's check my visibility
-              <svg class="icon"><use href="#i-arrow" /></svg
+              >Book my free consultation
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-diagonal" /></svg></a
+            ><span class="cta-note">30 minutes. A clear next step.</span>
+          </div>
+          <a class="explore-link" href="#video-studio"
+            >See what we do <span aria-hidden="true">↓</span></a
+          >
+        </div>
+      </section>
+
+      <nav class="container service-nav" aria-label="Explore our services">
+        <a href="#video-studio"
+          ><span class="service-dot dot-lilac"></span><span>Get seen</span
+          ><span class="service-nav-detail">Reels</span
+          ><svg class="icon" aria-hidden="true"><use href="#i-diagonal" /></svg
+        ></a>
+        <a href="#ai-visibility"
+          ><span class="service-dot dot-mint"></span><span>Get found</span
+          ><span class="service-nav-detail">Search</span
+          ><svg class="icon" aria-hidden="true"><use href="#i-diagonal" /></svg
+        ></a>
+        <a href="#ai-assistant"
+          ><span class="service-dot dot-peach"></span><span>Get booked</span
+          ><span class="service-nav-detail">Automation</span
+          ><svg class="icon" aria-hidden="true"><use href="#i-diagonal" /></svg
+        ></a>
+      </nav>
+
+      <section
+        class="service-section reels-section"
+        id="video-studio"
+        aria-labelledby="reels-heading"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">
+                <span class="section-number">01</span> Reels, made for you
+              </p>
+              <h2 id="reels-heading">
+                One raw clip.<br /><span class="muted-heading"
+                  >Your next viral Reel.</span
+                >
+              </h2>
+            </div>
+            <a
+              class="round-link"
+              href="https://calendly.com/zerde_ai/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talk to Zerde about Reels"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-diagonal" /></svg
             ></a>
           </div>
-          <figure
-            class="visibility-case"
-            id="visibility-results"
-            aria-labelledby="visibility-case-title"
-          >
-            <div class="visibility-case-top">
-              <span class="eyebrow">A client outcome</span
-              ><span class="case-tag">AI search visibility</span>
+          <figure class="service-example reels-example" id="reels-results">
+            <div class="example-topline">
+              <span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-video" />
+                </svg>
+                From the camera roll to the feed.</span
+              ><span class="example-label">A client Reel</span>
             </div>
-            <h3 id="visibility-case-title">
-              Move up.<br /><span class="gradient-text">Stand out.</span>
-            </h3>
             <div
-              class="rank-comparison"
-              aria-label="Client ranking improved from positions 4 to 5 to positions 1 to 2 on selected queries"
+              class="reels-strip"
+              role="group"
+              tabindex="0"
+              aria-label="Instagram screenshots. Swipe or scroll to see all three."
             >
-              <div class="rank-stage rank-before">
-                <span class="journey-label">Before</span
-                ><strong>4–5<span>positions</span></strong>
-                <p>Further down.<br />Easier to overlook.</p>
-                <div class="ranking-bars" aria-hidden="true">
-                  <i></i><i></i><i></i><i class="rank-client"></i
-                  ><i class="rank-client"></i>
-                </div>
-              </div>
-              <span class="rank-arrow" aria-hidden="true"
-                ><svg class="icon"><use href="#i-arrow" /></svg
-              ></span>
-              <div class="rank-stage rank-after">
-                <span class="journey-label">After</span
-                ><strong>1–2<span>positions</span></strong>
-                <p>Closer to the top.<br />Easier to discover.</p>
-                <div class="ranking-bars" aria-hidden="true">
-                  <i class="rank-client"></i><i class="rank-client"></i><i></i
-                  ><i></i><i></i>
-                </div>
-              </div>
+              <button
+                class="reel-shot reel-shot-one"
+                data-proof-image="reelsResult"
+                aria-label="Enlarge Instagram results: 55.8K views"
+              >
+                <img
+                  src="assets/products/reels-results.jpg"
+                  width="1280"
+                  height="720"
+                  alt="Hairstyling-school Reel with 55.8K views"
+                  loading="lazy"
+                /><span class="shot-caption"
+                  >01 / The Reel
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-expand" /></svg
+                ></span>
+              </button>
+              <button
+                class="reel-shot reel-shot-two"
+                data-proof-image="reelsResult"
+                aria-label="Enlarge Instagram results: 240 likes and 32 shares"
+              >
+                <img
+                  src="assets/products/reels-results.jpg"
+                  width="1280"
+                  height="720"
+                  alt="Instagram Reel showing 240 likes and 32 shares"
+                  loading="lazy"
+                /><span class="shot-caption"
+                  >02 / The engagement
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-expand" /></svg
+                ></span>
+              </button>
+              <button
+                class="reel-shot reel-shot-three"
+                data-proof-image="reelsResult"
+                aria-label="Enlarge Instagram comments asking for the tour link"
+              >
+                <img
+                  src="assets/products/reels-results.jpg"
+                  width="1280"
+                  height="720"
+                  alt="Viewers commenting MATH to ask for the school tour link"
+                  loading="lazy"
+                /><span class="shot-caption"
+                  >03 / The inquiries
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-expand" /></svg
+                ></span>
+              </button>
             </div>
-            <div class="rank-takeaway">
-              <span class="result-icon"
-                ><svg class="icon"><use href="#i-check" /></svg
-              ></span>
-              <p>
-                <strong>A stronger spot in the answer.</strong>More visibility
-                at the moment people are choosing.
-              </p>
-            </div>
-            <figcaption>
-              Client ranking example · Selected queries · Illustrated comparison
+            <figcaption class="example-caption">
+              <span>One Reel. Real tour inquiries.</span
+              ><span class="swipe-hint"
+                >Swipe to explore <span aria-hidden="true">↔</span></span
+              ><span class="desktop-hint"
+                >Click any screen to zoom
+                <span aria-hidden="true">↗</span></span
+              >
             </figcaption>
           </figure>
+          <div
+            class="outcome-row reels-outcome"
+            aria-label="Results from the Reel shown above"
+          >
+            <div class="main-outcome">
+              <strong>55.8K</strong><span>views on one Reel</span>
+            </div>
+            <div class="small-outcome">
+              <strong>240</strong><span>likes</span>
+            </div>
+            <div class="small-outcome">
+              <strong>32</strong><span>shares</span>
+            </div>
+            <p class="outcome-note">From watching<br />to asking for a tour.</p>
+          </div>
         </div>
-        <div class="container visibility-section-footer">
-          <span>Get seen where your next customer is searching.</span>
-          <p>
-            Client example shown as an infographic, not a live search result.
-            Search placement can vary by query, platform, and time.
+      </section>
+
+      <section
+        class="service-section visibility-section"
+        id="ai-visibility"
+        aria-labelledby="visibility-heading"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">
+                <span class="section-number">02</span> Search visibility
+              </p>
+              <h2 id="visibility-heading">
+                Be the business<br /><span class="muted-heading"
+                  >they find.</span
+                >
+              </h2>
+              <p class="section-description">
+                Help customers discover you on ChatGPT.
+              </p>
+            </div>
+            <a
+              class="round-link"
+              href="https://calendly.com/zerde_ai/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talk to Zerde about search visibility"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-diagonal" /></svg
+            ></a>
+          </div>
+          <div
+            class="service-example visibility-example"
+            id="visibility-results"
+          >
+            <div class="example-topline">
+              <span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-search" />
+                </svg>
+                Recommended in ChatGPT.</span
+              ><span class="example-label">A client example</span>
+            </div>
+            <div data-visibility-fallback>
+              <div
+                class="rank-comparison"
+                role="img"
+                aria-label="Illustrated comparison of a client's search positions: before 4 to 5, after 1 to 2"
+              >
+                <div class="rank-card rank-before">
+                  <div class="rank-card-header">
+                    <span>Before</span
+                    ><span class="rank-pill">Further down</span>
+                  </div>
+                  <div class="rank-list" aria-hidden="true">
+                    <div><b>01</b><i></i><i></i></div>
+                    <div><b>02</b><i></i><i></i></div>
+                    <div><b>03</b><i></i><i></i></div>
+                    <div class="rank-selected">
+                      <b>04</b><span>Your business</span>
+                    </div>
+                    <div class="rank-selected">
+                      <b>05</b><span>Your business</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="rank-arrow" aria-hidden="true"
+                  ><svg class="icon"><use href="#i-arrow" /></svg
+                ></span>
+                <div class="rank-card rank-after">
+                  <div class="rank-card-header">
+                    <span>After</span
+                    ><span class="rank-pill"
+                      ><span class="status-dot"></span> In the first picks</span
+                    >
+                  </div>
+                  <div class="rank-list" aria-hidden="true">
+                    <div class="rank-selected">
+                      <b>01</b><span>Your business</span
+                      ><svg class="icon"><use href="#i-spark" /></svg>
+                    </div>
+                    <div class="rank-selected">
+                      <b>02</b><span>Your business</span>
+                    </div>
+                    <div><b>03</b><i></i><i></i></div>
+                    <div><b>04</b><i></i><i></i></div>
+                    <div><b>05</b><i></i><i></i></div>
+                  </div>
+                </div>
+              </div>
+              <p class="example-caption">
+                <span>Move up. Get considered.</span
+                ><span>Illustrated comparison</span>
+              </p>
+            </div>
+            <!-- Real client screenshots are configured in productScreens.visibility. -->
+            <div
+              class="gallery visibility-gallery"
+              data-gallery="visibility"
+              hidden
+            >
+              <div
+                class="gallery-tabs"
+                role="tablist"
+                aria-label="Search visibility examples"
+              ></div>
+              <div class="gallery-panel" id="visibility-panel" role="tabpanel">
+                <ol
+                  class="search-podium"
+                  aria-label="First three schools in this ChatGPT answer"
+                >
+                  <li class="podium-place is-featured" data-rank="1">
+                    <span class="podium-school">Cinta Aveda Institute</span>
+                    <div class="podium-step">
+                      <span class="podium-number" aria-hidden="true">01</span>
+                    </div>
+                  </li>
+                  <li class="podium-place" data-rank="2">
+                    <span class="podium-school">Paul Mitchell</span>
+                    <div class="podium-step">
+                      <span class="podium-number" aria-hidden="true">02</span>
+                    </div>
+                  </li>
+                  <li class="podium-place" data-rank="3">
+                    <span class="podium-school">SF Institute</span>
+                    <div class="podium-step">
+                      <span class="podium-number" aria-hidden="true">03</span>
+                    </div>
+                  </li>
+                </ol>
+                <button
+                  class="visibility-proof-link"
+                  data-open-gallery
+                  aria-label="Enlarge search visibility screenshot"
+                >
+                  <svg class="icon" aria-hidden="true">
+                    <use href="#i-expand" />
+                  </svg>
+                  See the ChatGPT answer
+                </button>
+                <div class="gallery-caption" aria-live="polite">
+                  <span class="caption-number"></span>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="outcome-row visibility-outcome">
+            <div class="main-outcome rank-outcome">
+              <strong>Top 2</strong>
+              <span>in both answers shown</span>
+            </div>
+            <p class="outcome-note">
+              Closer to the top.<br />Easier to discover.
+            </p>
+          </div>
+          <p class="evidence-note">
+            Two answer excerpts for Cinta Aveda Institute. Placement varies by
+            query and time.
           </p>
         </div>
       </section>
 
-      <section class="section product-section" id="ai-assistant">
+      <section
+        class="service-section booking-section"
+        id="ai-assistant"
+        aria-labelledby="booking-heading"
+      >
         <div class="container">
-          <div class="product-heading">
+          <div class="section-heading">
             <div>
-              <span class="eyebrow"
-                ><span class="section-number">03</span> Stay fully booked</span
-              >
-              <h2>
-                Your front desk.<br /><span class="gradient-text"
-                  >Without closing hours.</span
+              <p class="eyebrow">
+                <span class="section-number">03</span> Booking automation
+              </p>
+              <h2 id="booking-heading">
+                Your front desk.<br /><span class="muted-heading"
+                  >Always open.</span
                 >
               </h2>
-            </div>
-            <div class="product-intro">
-              <p>
-                From the first question to a spot on your calendar. Your
-                assistant keeps the conversation moving, even when you're busy.
+              <p class="section-description">
+                Your bot answers questions right away and helps customers book,
+                day or night.
               </p>
-              <a
-                class="text-link"
-                href="https://calendly.com/zerde_ai/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                >See it book a client
-                <svg class="icon"><use href="#i-arrow" /></svg
-              ></a>
             </div>
+            <a
+              class="round-link"
+              href="https://calendly.com/zerde_ai/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talk to Zerde about booking automation"
+              ><svg class="icon" aria-hidden="true">
+                <use href="#i-diagonal" /></svg
+            ></a>
           </div>
-          <div class="booking-features">
-            <div>
-              <svg class="icon"><use href="#i-chat" /></svg
-              ><span
-                ><strong>They ask. You answer.</strong>Texts, calls, chats, and
-                DMs</span
+          <ul
+            class="booking-hours"
+            aria-label="Your bot replies throughout the day and night"
+          >
+            <li>
+              <span class="booking-hour">7 <span>PM</span></span>
+              <p>
+                You’re having dinner.<strong
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                  >Your bot replies.</strong
+                >
+              </p>
+            </li>
+            <li>
+              <span class="booking-hour">2 <span>AM</span></span>
+              <p>
+                You’re fast asleep.<strong
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                  >Your bot replies.</strong
+                >
+              </p>
+            </li>
+            <li>
+              <span class="booking-hour">9 <span>AM</span></span>
+              <p>
+                You’re with a client.<strong
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-check" /></svg
+                  >Your bot replies.</strong
+                >
+              </p>
+            </li>
+          </ul>
+          <div class="service-example booking-example">
+            <div class="example-topline">
+              <span
+                ><svg class="icon" aria-hidden="true">
+                  <use href="#i-chat" />
+                </svg>
+                Questions don’t keep office hours.</span
+              ><span class="example-label"
+                ><span class="status-dot"></span> Replies 24/7</span
               >
             </div>
-            <div>
-              <svg class="icon"><use href="#i-search" /></svg
-              ><span
-                ><strong>Your services. Your answers.</strong>Your services,
-                prices, and policies</span
-              >
-            </div>
-            <div>
-              <svg class="icon"><use href="#i-calendar" /></svg
-              ><span
-                ><strong>Keep talking. Get booked.</strong>Connected to your
-                calendar</span
-              >
-            </div>
-          </div>
-          <div class="booking-workspace">
+
             <div class="gallery" data-gallery="assistant">
-              <div class="gallery-topline">
-                <span
-                  ><span class="status-dot"></span> Inside the Zerde booking
-                  assistant</span
-                ><span>Real product screens</span>
-              </div>
               <div
                 class="gallery-tabs"
                 role="tablist"
@@ -794,7 +551,7 @@
                   aria-controls="assistant-panel"
                   data-slide="0"
                 >
-                  Dashboard</button
+                  Bookings</button
                 ><button
                   id="assistant-tab-1"
                   role="tab"
@@ -812,7 +569,7 @@
                   tabindex="-1"
                   data-slide="2"
                 >
-                  All conversations
+                  Inbox
                 </button>
               </div>
               <div
@@ -828,193 +585,89 @@
                 >
                   <img
                     src="assets/products/assistant-dashboard.png"
-                    alt="Zerde dashboard: 47 conversations started, 16 appointments booked, and 34 percent conversion in seven days"
+                    alt="Zerde dashboard showing 47 conversations, 16 appointments booked, and 34 percent conversion in seven days"
                     width="1333"
                     height="682"
                     loading="lazy"
                   /><span class="zoom-label"
-                    ><svg class="icon"><use href="#i-expand" /></svg> Take a
-                    closer look</span
+                    ><svg class="icon" aria-hidden="true">
+                      <use href="#i-expand" />
+                    </svg>
+                    Take a closer look</span
                   >
                 </button>
                 <div class="gallery-caption" aria-live="polite">
                   <span class="caption-number">01 / 03</span>
-                  <p>Conversations and bookings. A clear view of your week.</p>
+                  <p>Conversations and bookings, in one place.</p>
                 </div>
               </div>
             </div>
-            <aside class="booking-proof">
-              <span class="eyebrow">One week. Real bookings.</span>
-              <div class="proof-stat">
-                <strong>16<span>bookings</span></strong>
-                <p>in a 7-day reporting period</p>
-              </div>
-              <div class="proof-stat secondary-stat">
-                <strong>34<span>%</span></strong>
-                <p>conversation-to-booking conversion</p>
-              </div>
-              <p class="proof-context">
-                47 conversations started. 16 appointments booked. See what
-                happened in one real 7-day reporting period.
-              </p>
-              <p class="privacy-note">
-                <svg class="icon"><use href="#i-check" /></svg> Customer phone
-                numbers are hidden.
-              </p>
-              <a
-                class="text-link"
-                href="https://calendly.com/zerde_ai/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Meet your next front desk
-                <svg class="icon"><use href="#i-arrow" /></svg
-              ></a>
-            </aside>
           </div>
+          <div
+            class="outcome-row booking-outcome"
+            aria-label="Results from the booking dashboard shown above"
+          >
+            <div class="main-outcome">
+              <strong>16</strong><span>bookings in 7 days</span>
+            </div>
+            <div class="main-outcome">
+              <strong>34<span class="percent">%</span></strong
+              ><span>conversation-to-booking conversion</span>
+            </div>
+            <p class="outcome-note">
+              Less back-and-forth.<br />More time for your business.
+            </p>
+          </div>
+          <p class="evidence-note">
+            One 7-day dashboard snapshot. Customer phone numbers are hidden.
+          </p>
         </div>
       </section>
 
-      <section class="section how-section" id="how-it-works">
-        <div class="container">
-          <div class="section-heading centered">
-            <span class="eyebrow">How it works</span>
-            <h2>You run your business.<br />We'll get you set up.</h2>
-          </div>
-          <div class="steps-grid">
-            <article>
-              <span class="step-number">01</span>
-              <h3>Find your best fit.</h3>
-              <p>
-                Bring your biggest challenge to a free 30-minute consultation.
-                See the right solution and leave knowing where to start.
-              </p>
-            </article>
-            <article>
-              <span class="step-number">02</span>
-              <h3>We handle the setup.</h3>
-              <p>
-                We get your chosen services ready in 1–2 weeks. No technical
-                skills needed.
-              </p>
-            </article>
-            <article>
-              <span class="step-number">03</span>
-              <h3>Get seen. Get booked.</h3>
-              <p>
-                Create Reels in StoryFast, build your search presence with our
-                team, or let your booking assistant welcome the next customer.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section faq-section" id="faq">
+      <section class="faq-section" id="faq" aria-labelledby="faq-heading">
         <div class="container faq-grid">
           <div>
-            <span class="eyebrow">A few good questions</span>
-            <h2>Less guesswork.<br />More clarity.</h2>
-            <p>Something else on your mind?<br />Let's talk it through.</p>
-            <a
-              class="text-link"
-              href="https://calendly.com/zerde_ai/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Find my fit <svg class="icon"><use href="#i-arrow" /></svg
-            ></a>
+            <p class="eyebrow">Good to know</p>
+            <h2 id="faq-heading">
+              A few<br />
+              quick answers.
+            </h2>
           </div>
           <div class="faq-list">
             <details>
               <summary>
-                Thirty minutes. What will I leave with?<span aria-hidden="true"
-                  >+</span
-                >
+                Do I need all three services?<span aria-hidden="true">+</span>
               </summary>
               <p>
-                We'll discuss your business and the task you'd like to improve,
-                show you the relevant product or walk through our AI visibility
-                service, then agree on a practical next step. You'll know what
-                fits, what getting started involves, and what you would do day
-                to day.
+                Start with what you need: Reels, search visibility, or booking
+                automation. We’ll help you choose on the call.
               </p>
             </details>
             <details>
               <summary>
-                Your clips. Who creates the Reel?<span aria-hidden="true"
-                  >+</span
-                >
+                Who makes the Reels?<span aria-hidden="true">+</span>
               </summary>
               <p>
-                You create it in StoryFast, Zerde's own AI video platform.
-                Upload your footage, use AI to help with the script, edit,
-                captions, and voiceover, then review and share your Reel. We
-                provide the software and help you get started.
+                We do. You share your footage; we turn it into Reels for your
+                business.
               </p>
             </details>
             <details>
               <summary>
-                Ready to start. How soon?<span aria-hidden="true">+</span>
+                What happens on the free call?<span aria-hidden="true">+</span>
               </summary>
               <p>
-                Usually 1–2 weeks. We handle the setup, learn your business, and
-                get your chosen service ready to go.
+                We talk through your business, show you the relevant service,
+                and find a practical next step. It takes 30 minutes.
               </p>
             </details>
             <details>
               <summary>
-                Not tech-savvy. Still a fit?<span aria-hidden="true">+</span>
+                How soon can we start?<span aria-hidden="true">+</span>
               </summary>
               <p>
-                Absolutely. You bring the business knowledge. We handle the
-                setup and show you the simple day-to-day steps.
-              </p>
-            </details>
-            <details>
-              <summary>
-                Views are great. What about inquiries?<span aria-hidden="true"
-                  >+</span
-                >
-              </summary>
-              <p>
-                Our Reel example shows 55.8K views, 32 shares, and people asking
-                for a tour link. That's attention turning into interest. In the
-                separate booking example, the assistant dashboard shows 16
-                appointments in seven days. Each example shows a different part
-                of the customer journey.
-              </p>
-            </details>
-            <details>
-              <summary>
-                One service. Or the whole setup?<span aria-hidden="true"
-                  >+</span
-                >
-              </summary>
-              <p>
-                Your choice. Start with StoryFast for video creation, our AI
-                visibility service, or the Zerde booking assistant. Add more
-                when you're ready.
-              </p>
-            </details>
-            <details>
-              <summary>
-                Small business. Big enough for Zerde?<span aria-hidden="true"
-                  >+</span
-                >
-              </summary>
-              <p>
-                That's who we're here for. We work with US small and medium
-                businesses, from beauty and wellness to home services, tours,
-                and professional services.
-              </p>
-            </details>
-            <details>
-              <summary>
-                Your tools. Can we keep them?<span aria-hidden="true">+</span>
-              </summary>
-              <p>
-                Let's look at what you already use. We'll review your calendar
-                and communication channels, then confirm the connections and
-                workflow before setup.
+                Setup usually takes 1–2 weeks. We’ll confirm the scope, timing,
+                and any connections to your existing tools on the call.
               </p>
             </details>
           </div>
@@ -1027,73 +680,60 @@
         aria-labelledby="consultation-heading"
       >
         <div class="container">
-          <span class="badge">Your free 30-minute consultation</span>
-          <h2 id="consultation-heading">
-            See the tools.<br />Find your next step.
-          </h2>
-          <p>
-            Bring your business. We'll help you choose the right place to start.
-          </p>
-          <ol
-            class="consultation-agenda"
-            aria-label="What happens during your consultation"
-          >
-            <li>
-              <span class="agenda-number">01</span>
-              <h3>Your business.</h3>
-              <p>Talk through your goals and what's taking up your time.</p>
-            </li>
-            <li>
-              <span class="agenda-number">02</span>
-              <h3>Your best fit.</h3>
-              <p>
-                See StoryFast or the booking assistant in action, or explore our
-                AI visibility service.
-              </p>
-            </li>
-            <li>
-              <span class="agenda-number">03</span>
-              <h3>Your next step.</h3>
-              <p>
-                Leave with a practical starting point and clarity on what setup
-                involves.
-              </p>
-            </li>
-          </ol>
-          <a
-            class="btn btn-white"
-            href="https://calendly.com/zerde_ai/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Book my free consultation
-            <svg class="icon"><use href="#i-arrow" /></svg
-          ></a>
-          <span class="final-note"
-            >30 minutes with the Zerde team. A clear next step for your
-            business.</span
-          >
+          <div class="cta-card">
+            <svg class="cta-spark icon" aria-hidden="true">
+              <use href="#i-spark" />
+            </svg>
+            <p class="eyebrow">You run the business. We’re here to help.</p>
+            <h2 id="consultation-heading">
+              Less on your plate.<br />More <span>possibility.</span>
+            </h2>
+            <a
+              class="btn"
+              href="https://calendly.com/zerde_ai/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Book my free consultation
+              <svg class="icon" aria-hidden="true">
+                <use href="#i-diagonal" /></svg
+            ></a>
+            <p class="cta-note">
+              Free · 30 minutes · Your next step, made clear
+            </p>
+          </div>
         </div>
       </section>
     </main>
+
     <footer>
       <div class="container footer-inner">
-        <a class="brand" href="#"
-          ><span class="brand-icon"
-            ><svg class="icon"><use href="#i-logo" /></svg></span
+        <a class="brand" href="#" aria-label="Zerde home"
+          ><svg class="icon brand-icon" aria-hidden="true">
+            <use href="#i-logo" /></svg
           >Zerde<span class="brand-period">.</span></a
         >
         <p>More time for what you do best.</p>
         <span>© 2026 Zerde LLC</span>
       </div>
     </footer>
-
-    <dialog class="lightbox" aria-labelledby="lightbox-title">
+    <dialog
+      class="lightbox"
+      aria-labelledby="lightbox-title"
+      aria-describedby="lightbox-caption"
+    >
       <div class="lightbox-toolbar">
         <div>
           <span id="lightbox-title">Inside Zerde</span
           ><span id="lightbox-count"></span>
         </div>
-        <button class="lightbox-close" aria-label="Close screenshot">✕</button>
+        <button
+          class="lightbox-zoom"
+          data-lightbox-zoom
+          aria-pressed="false"
+          aria-label="Zoom in"
+        >
+          Zoom in</button
+        ><button class="lightbox-close" aria-label="Close screenshot">✕</button>
       </div>
       <div class="lightbox-image-wrap"><img id="lightbox-image" alt="" /></div>
       <div class="lightbox-bottom">
